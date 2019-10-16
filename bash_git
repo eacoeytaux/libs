@@ -1,0 +1,68 @@
+# Ethan's git aliases/functions
+
+# if not running interactively then don't do anything
+[[ $- != *i* ]] && return;
+
+[[ -z $git_main_branch ]] && git_main_branch="master";
+
+# aliases
+alias g="git ";
+alias gl="git log ";
+alias gs="git status ";
+alias gb="git branch ";
+alias gcb="git branch | grep '\* ' | cut -d '*' -f2 | cut -c2- ";
+alias gc="git checkout ";
+alias gd="git diff ";
+alias gg="git grep --color=auto -n -i ";
+
+alias gitbranch="git branch ";
+function gitcurrentbranch {
+    git branch | grep '\* ' | cut -d '*' -f2 | cut -c2-
+}; export -f gitcurrentbranch;
+
+# go to git main branch and pull from repo
+function gitlatest {
+    git checkout $git_main_branch && \
+    git pull origin $git_main_branch
+}; export -f gitlatest;
+
+# create a new branch from the latest version of the repo
+function gitnew {
+    gitlatest && \
+    git checkout -b "$1"
+}; export -f gitnew;
+
+# auto git rebase
+function gitrebase {
+    branch_to_rebase="${1:-$(gitcurrentbranch)}" && \
+    git checkout $git_main_branch && \
+    git fetch -a && \
+    git pull && \
+    git checkout "$branch_to_rebase" && \
+    git fetch origin && \
+    git rebase origin/$git_main_branch
+}; export -f gitrebase;
+
+# git rebase all commits into one
+function gitsquish {
+    branch_to_rebase="${1:-$(gitcurrentbranch)}" && \
+    git checkout "$branch_to_rebase" && \
+    git pull && \
+    num_to_squash=$(git cherry -v $git_main_branch | wc -l) && \
+    git rebase -i HEAD~$num_to_squash
+}; export -f gitsquish;
+
+# nearly-auto rebase change into last commit and force push
+function gitaddtolast {
+    git add "$@"
+    git commit -m 'msg' && \
+    git rebase -i HEAD~2 && \
+    git push origin --force-with-lease $(gitcurrentbranch)
+}; export -f gitaddtolast;
+
+# -- aliases for this file --
+
+alias srcbgit="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_git)";
+alias viewbgit="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_git)";
+alias catbgit="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_git";
+

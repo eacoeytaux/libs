@@ -1,0 +1,82 @@
+# Ethan's bash trash
+
+# if not running interactively then don't do anything
+[[ $- != *i* ]] && return;
+
+# let user know "rm" should not be used
+alias rm="echo \"rm is disabled, use srm (saferm) or frm (forcerm) instead\"";
+
+# allow \rm
+function forcerm {
+    \rm "$@"
+}; export -f forcerm
+function frm { forcerm "$@"; }; export -f frm;
+
+function Sforcerm {
+    sudo \rm "$@"
+}; export -f Sforcerm
+function Sfrm { Sforcerm "$@"; }; export -f Sfrm;
+
+[[ -z $trash_dir ]] && trash_dir="$HOME/.trash/";
+mkdir -p "$trash_dir";
+
+# replaces rm by moving files to designated trash ~ usage: saferm <list of files to delete>
+function saferm {
+    for saferm_arg in "$@"; do # remove files if one with same name exists, then mv/unlink
+        [[ -f "$trash_dir/$saferm_arg" ]] || [[ -d "$trash_dir/$saferm_arg" ]] && \rm -rf "$trash_dir/$saferm_arg"
+        if [[ -L "$saferm_arg" ]]; then unlink "$saferm_arg"; else mv -f "$saferm_arg" "$trash_dir"; fi
+    done
+}; export -f saferm;
+function srm { saferm "$@"; }; export -f srm;
+
+# same as saferm, just with sudo
+function Ssaferm {
+    for ssaferm_arg in "$@"; do # remove files if one with same name exists
+        [[ -f "$trash_dir/$ssaferm_arg" ]] || [[ -d "$trash_dir/$ssaferm_arg" ]] && \rm -rf "$trash_dir/$ssaferm_arg"
+        if [[ -L "$ssaferm_arg" ]]; then sudo unlink "$ssaferm_arg"; else sudo mv -f "$ssaferm_arg" "$trash_dir"; fi
+    done
+    sudo chown -R "$(whoami)" "$trash_dir"
+}; export -f Ssaferm;
+function Ssrm { Ssaferm "$@"; }; export -f Ssrm;
+
+# moves file out of trash ~ usage: restore <file to restore> <dir to restore to (default ./)>
+function restore {
+    mv -i "$trash$1" "${2:-./}"
+}; export -f restore;
+
+TRASH_EMPTY_MESSAGE="trash is empty"
+function trash {
+    trash_file_count=$(( $(find "$trash_dir" -type f | wc -l) + $(find "$trash_dir" -type l | wc -l) ))
+    case "$1" in
+        "rm" | "empty")
+            find "$trash_dir" -mindepth 1 -delete
+            ;;
+        "info")
+            if [[ $trash_file_count -gt 0 ]]; then
+                printf "current trash size: \033[1;31m$(du -h --max-depth=0 $trash_dir | cut -f1) ($trash_file_count files)\033[0m\n"
+            else
+                echo "$TRASH_EMPTY_MESSAGE"
+            fi
+            ;;
+        "loc" | "location")
+            echo "$trash_dir"
+            ;;
+        "ls")
+            if [[ $trash_file_count -gt 0 ]]; then
+                ls -R "$trash_dir" | sed s"|^$trash_dir:|trash contents:|g" | sed "s|$trash_dir|trash/|g"
+            else
+                echo "$TRASH_EMPTY_MESSAGE"
+            fi
+            ;;
+        *)
+            echo "valid trash commands: rm/empty, info, loc, ls"
+            ;;
+    esac
+}; export -f trash;
+
+# -- aliases for this file --
+
+alias srcbtrash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)";
+alias viewbtrash="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)";
+alias catbtrash="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash";
+
