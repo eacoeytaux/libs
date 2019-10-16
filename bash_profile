@@ -28,8 +28,6 @@ alias psa="ps aux | head -1 && ps aux | grep"
 alias psaw="ps aux | head -1 && ps aux | grep ^$(whoami)"
 alias h="history"
 alias hg="history | grep"
-alias vimp="vim ~/.vimrc"
-alias vimc="cat ~/.vimrc"
 
 # bash functions
 function please {
@@ -125,6 +123,10 @@ function gitupdate {
     git rebase -i HEAD~2
     git push origin -f $(gitcurr)
 }
+
+# vimrc aliases
+alias vimp="vim ~/.vimrc"
+alias vimc="cat ~/.vimrc"
 
 # bashrc.user aliases
 alias bashp="vim ~/.bashrc.user"
