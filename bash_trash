@@ -40,7 +40,7 @@ function trashdisplay {
     trash_file_count=$(find "$trash" -type f | wc -l)
     if [[ $trash_file_count -gt 0 ]]; then
         trash_size="$(du -h --max-depth=0 $trash | cut -f1)"
-        printf "Current trash size: \033[1;31m$trash_size ($trash_details files)\033[0m\n"
+        printf "Current trash size: \033[1;31m$trash_size ($trash_file_count files)\033[0m\n"
     fi
 }
 trashdisplay
