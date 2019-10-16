@@ -1,8 +1,9 @@
 # Ethan's bash profile
-# source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile)
 
 # if not running interactively then don't do anything
 [[ $- != *i* ]] && return
+
+alias srcbash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile)"
 
 export PS1="\e[0;36m\][\t \d] ${HOSTNAMEALIAS%%.*}:\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
 export HISTTIMEFORMAT="[%T %F] "
@@ -25,11 +26,6 @@ alias psa="ps aux | head -1 && ps aux | grep"
 alias psaw="ps aux | head -1 && ps aux | grep ^$(whoami)"
 alias h="history"
 alias hg="history | grep"
-alias bashp="vim ~/.bashrc.user"
-alias bashs="source ~/.bashrc.user"
-alias bashps="vim ~/.bashrc.user; source ~/.bashrc.user"
-alias bashc="cat ~/.bashrc.user"
-alias bashv="view ~/.bashrc.user"
 alias vimp="vim ~/.vimrc"
 alias vimc="cat ~/.vimrc"
 
@@ -127,3 +123,10 @@ function gitupdate {
     git rebase -i HEAD~2
     git push origin -f $(gitcurr)
 }
+
+# bashrc.user aliases
+alias bashp="vim ~/.bashrc.user"
+alias bashs="source ~/.bashrc.user"
+alias bashps="vim ~/.bashrc.user; source ~/.bashrc.user"
+alias bashc="cat ~/.bashrc.user"
+alias bashv="view ~/.bashrc.user"
