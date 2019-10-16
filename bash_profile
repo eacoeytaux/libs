@@ -17,9 +17,9 @@ export GREP_OPTIONS="--color=auto"
 alias S="sudo"
 alias view="vim -R"
 alias t="time"
-alias la="ls -laF"
-alias lh="ls -laFh"
-alias lr="ls -laFhR"
+alias la="ls -laF -I . -I .."
+alias lh="ls -laFh -I . -I .."
+alias lr="ls -laFhR -I . -I .."
 alias rmf="rm -rf"
 alias mkdir="mkdir -pv"
 alias dh="du -h"
@@ -36,7 +36,7 @@ function please {
     sudo $(history 2 | cut -d ']' -f2 | cut -c2- | head -1)
 }
 function cdl {
-    cd "$1" && ls -laFh
+    cd "$1" && ls -laFh -I . -I ..
 }
 function cdup {
     cdup_count=$1
