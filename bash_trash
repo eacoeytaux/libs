@@ -9,9 +9,9 @@ alias rm="saferm"
 trash="$HOME/.trash/"
 mkdir -p $trash
 
-alias lstrash="ls -R $trash"
-alias latrash="ls -laFR $trash"
-alias lhtrash="lh -laFhR $trash"
+alias lstrash="ls -R  -I . -I .. $trash"
+alias latrash="ls -laFR -I . -I .. $trash"
+alias lhtrash="lh -laFhR -I . -I .. $trash"
 
 function saferm {
     mkdir -p $trash
