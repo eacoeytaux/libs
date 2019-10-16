@@ -3,7 +3,7 @@
 
 export PS1="\e[0;36m\][\t \d] ${HOSTNAMEALIAS%%.*}:\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
 export HISTTIMEFORMAT="[%T %F] "
-export HISTCONTROL="ignoreboth"
+export HISTCONTROL=ignoreboth
 export EDITOR=vim
 export GREP_OPTIONS="--color=auto"
 
