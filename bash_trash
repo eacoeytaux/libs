@@ -1,6 +1,8 @@
 # bash trash
 
 alias srctrash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
+alias viewtrash="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
+alias cattrash="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash"
 
 alias rm="saferm"
 
