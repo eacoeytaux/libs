@@ -2,6 +2,8 @@
 
 alias srctrash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
 
+alias rm="saferm"
+
 trash="$HOME/.trash/"
 mkdir -p $trash
 
