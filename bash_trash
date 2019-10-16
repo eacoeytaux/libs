@@ -14,7 +14,7 @@ function saferm {
     mv $@ "$trash" &
 }
 
-alias viewtrash="find $trash -type f | sed "s|$trash||g"
+alias viewtrash="trashdisplay && find $trash -type f | sed "s|$trash||g"
 alias lstrash="ls -I . -I .. \"$trash\""
 alias latrash="ls -laF -I . -I .. \"$trash\""
 alias lhtrash="lh -laFh -I . -I .. \"$trash\""
@@ -37,9 +37,10 @@ function restore {
 
 # display whenever user logs in
 function trashdisplay {
-    if [[ $(find "$trash" -type f | wc -l) -gt 0 ]]; then
-        trash_size="$(du -h --max-depth=0 $trash | cut -f1) ($(find \"$trash\" -type f | wc -l) files)"
-        printf "Current trash size: \033[1;31m$trash_size\033[0m\n"
+    trash_file_count=$(find "$trash" -type f | wc -l)
+    if [[ $trash_file_count -gt 0 ]]; then
+        trash_details="$(du -h --max-depth=0 $trash | cut -f1) ($trash_file_count files)"
+        printf "Current trash size: \033[1;31m$trash_details\033[0m\n"
     fi
 }
 trashdisplay
