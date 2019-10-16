@@ -14,11 +14,13 @@ function saferm {
     mv $@ $trash &
 }
 
-alias lstrash="ls -I . -I .. $trash"
-alias latrash="ls -laF -I . -I .. $trash"
-alias lhtrash="lh -laFh -I . -I .. $trash"
-alias lrtrash="lh -laFhR -I . -I .. $trash"
 alias viewtrash="find $trash -type f | cut -c$((${#trash}+1))-"
+alias lstrash="ls -I . -I .. $trash"
+alias lsrtrash="ls -R -I . -I .. $trash"
+alias latrash="ls -laF -I . -I .. $trash"
+alias lartrash="ls -laFR -I . -I .. $trash"
+alias lhtrash="lh -laFh -I . -I .. $trash"
+alias lhrtrash="lh -laFhR -I . -I .. $trash"
 
 alias emptytrash="rmtrash"
 function rmtrash {
