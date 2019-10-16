@@ -36,11 +36,11 @@ function cdl {
     cd "$1" && ls -laFh -I . -I ..
 }
 function cdup {
-    cdup_count=$1
-    if [[ -z $cdup_count ]]; then
+    cdup_count="$1"
+    if [[ -z "$cdup_count" ]]; then
         cdup_count="1"
     fi
-    for ((i = 1; i <= $cdup_count; i++)); do
+    for ((i = 1; i <= "$cdup_count"; i++)); do
         cd ../
     done
 }
@@ -48,11 +48,11 @@ function mkcd {
     mkdir -pv "$1" && cd "$1"
 }
 function bkup {
-    cp $1 .$1.bkup_$(date +%Y_%m_%d_%M_%S)
+    cp "$1" ".$1.bkup_$(date +%Y_%m_%d_%M_%S)"
 }
 function fcnt {
-    fcnt_dir=$1
-    if [[ -z $fcnt_dir ]]; then
+    fcnt_dir="$1"
+    if [[ -z "$fcnt_dir" ]]; then
         fcnt_dir="."
     fi
     echo $(ls "$fcnt_dir" | wc -l)
@@ -64,7 +64,7 @@ function fhere {
     find . -iname "*$1*"
 }
 function ffind {
-    find $1 -iname "*$2*"
+    find "$1" -iname "*$2*"
 }
 # "search in files"
 function sif() {
@@ -75,16 +75,16 @@ function rif() {
     find . -type f -exec sed -i "s|$1|$2|g" {} +
 }
 function lastedit {
-    find $1 -type f -exec stat \{} --printf="%y\n" \; | sort -nr | head -1
+    find "$1" -type f -exec stat \{} --printf="%y\n" \; | sort -nr | head -1
 }
 function pskill {
-    kill -9 $(ps aux | grep $1 | awk '{print $2}')
+    kill -9 $(ps aux | grep "$1" | awk '{print $2}')
 }
 function sumcol {
-    awk "{sum+=\$$1}END{print sum}" $2
+    awk "{sum+=\$$1}END{print sum}" "$2"
 }
 function binary {
-    xxd -c16 -b $1 | cut -d' '-f2-17 | tr -d' '| tr -d'\n'
+    xxd -c16 -b "$1" | cut -d' '-f2-17 | tr -d' '| tr -d'\n'
 }
 
 # git aliases
@@ -96,24 +96,24 @@ alias gd="git diff"
 
 # git functions
 function gitsquish {
-    branch_to_rebase=$1
-    if [[ -z $branch_to_rebase ]]; then
+    branch_to_rebase="$1"
+    if [[ -z "$branch_to_rebase" ]]; then
         branch_to_rebase=$(gitcurr)
     fi
-    git checkout $branch_to_rebase
+    git checkout "$branch_to_rebase"
     git pull
     num_to_squash=$(git cherry -v master | wc -l)
     git rebase -i HEAD~$num_to_squash
 }
 function gitrebase {
-    branch_to_rebase=$1
-    if [[ -z $branch_to_rebase ]]; then
+    branch_to_rebase="$1"
+    if [[ -z "$branch_to_rebase" ]]; then
         branch_to_rebase=$(gitcurr)
     fi
     git checkout master
     git fetch -a
     git pull
-    git checkout $branch_to_rebase
+    git checkout "$branch_to_rebase"
     git fetch origin
     git rebase origin/master
 }
