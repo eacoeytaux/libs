@@ -6,7 +6,7 @@ alias catbtrash="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/mast
 
 alias rm="saferm"
 
-trash="$HOME/.bash_trash/"
+trash="$HOME/.trash/"
 mkdir -p "$trash"
 
 function saferm {
