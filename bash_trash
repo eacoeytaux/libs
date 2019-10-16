@@ -12,14 +12,15 @@ function saferm {
     mkdir -p $trash
     mv $@ $trash &
 }
-function emptytrash {
+alias emptytrash="rmtrash"
+function rmtrash {
     rm -rf $@ $trash* &
 }
 function restore {
     restore_dir=$2
-        if [[ -z $restore_dir ]]; then
-    restore_dir="./"
-fi
+    if [[ -z $restore_dir ]]; then
+        restore_dir="./"
+    fi
     mv $trash$1 $restore_dir
 }
 
