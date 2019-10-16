@@ -1,9 +1,11 @@
 # bash trash
 trash="$HOME/.trash/"
 mkdir -p $trash
+
 alias lstrash="ls $trash"
 alias latrash="ls -laF $trash"
 alias lhtrash="lh -laFh $trash"
+
 function saferm {
     mkdir -p $trash
     mv $@ $trash &
@@ -12,14 +14,16 @@ function emptytrash {
     rm -rf $@ $trash* &
 }
 function restore {
-restore_dir=$2
-    if [[ -z $restore_dir ]]; then
-restore_dir="./"
+    restore_dir=$2
+        if [[ -z $restore_dir ]]; then
+    restore_dir="./"
 fi
     mv $trash$1 $restore_dir
 }
+
 # remove all files more than 3 weeks old at login
 #rm -rf $(find $trash -mindepth 1 -mtime +21) # this seems a bit dangerous
+
 # display whenever user logs in
 if [[ $(find $trash -type f | wc -l) -gt 0 ]]; then
     echo "Current trash size: $(du -h --max-depth=0 $trash | cut -f1) ($(find $trash -type f | wc -l) files)"
