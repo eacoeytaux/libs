@@ -70,7 +70,7 @@ function ffind {
 }
 # "search in files"
 function sif() {
-    grep -r "${@:2}" --exclude-dir=node_modules --exclude-dir=.git "$1" .
+    grep -r "${@:2}" --exclude-dir=.git --exclude-dir=node_modules "$1" ./
 }
 # "replace in files"
 function rif() {
