@@ -48,6 +48,9 @@ function cdup {
 function mkcd {
     mkdir -pv "$1" && cd "$1"
 }
+function bkup {
+    cp $1 .$1.bkup_$(date +%Y_%m_%d_%M_%S)
+}
 function fcnt {
     fcnt_dir=$1
     if [[ -z $fcnt_dir ]]; then
