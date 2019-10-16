@@ -29,7 +29,7 @@ function restore {
     if [[ -z $restore_dir ]]; then
         restore_dir="./"
     fi
-    mv $trash$1 $restore_dir
+    mv -i $trash$1 $restore_dir
 }
 
 # remove all files more than 3 weeks old at login
