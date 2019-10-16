@@ -38,7 +38,7 @@ function restore {
 # display whenever user logs in
 function trashdisplay {
     if [[ $(find "$trash" -type f | wc -l) -gt 0 ]]; then
-        printf "Current trash size: \033[1;31m$(du -h --max-depth=0 $trash | cut -f1) \($(find \"$trash\" -type f | wc -l) files\)\033[0m\n"
+        printf "Current trash size: \033[1;31m$(du -h --max-depth=0 $trash | cut -f1) \($(find "$trash" -type f | wc -l) files\)\033[0m\n"
     fi
 }
 trashdisplay
