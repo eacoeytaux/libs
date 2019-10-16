@@ -1,5 +1,6 @@
 # bash trash
-# source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)
+
+alias srctrash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
 
 trash="$HOME/.trash/"
 mkdir -p $trash
