@@ -43,7 +43,7 @@ function cdl {
 function cdup {
     cdup_count=$1
     if [[ -z $cdup_count ]]; then
-            cdup_count="1"
+        cdup_count="1"
     fi
     for ((i = 1; i <= $cdup_count; i++)); do
         cd ../
@@ -55,7 +55,7 @@ function mkcd {
 function fcnt {
     fcnt_dir=$1
     if [[ -z $fcnt_dir ]]; then
-            fcnt_dir="."
+        fcnt_dir="."
     fi
     echo $(ls "$fcnt_dir" | wc -l)
 }
@@ -92,7 +92,7 @@ alias gd="git diff"
 function gitsquish {
     branch_to_rebase=$1
     if [[ -z $branch_to_rebase ]]; then
-            branch_to_rebase=$(gitcurr)
+        branch_to_rebase=$(gitcurr)
     fi
     git checkout $branch_to_rebase
     git pull
@@ -102,7 +102,7 @@ function gitsquish {
 function gitrebase {
     branch_to_rebase=$1
     if [[ -z $branch_to_rebase ]]; then
-            branch_to_rebase=$(gitcurr)
+        branch_to_rebase=$(gitcurr)
     fi
     git checkout master
     git fetch -a
