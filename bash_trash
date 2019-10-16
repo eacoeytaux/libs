@@ -1,6 +1,6 @@
 # bash trash
 
-alias srcbtrash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
+alias srcbtrash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash) && trashdisplay"
 alias viewbtrash="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
 alias catbtrash="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash"
 
@@ -36,6 +36,8 @@ function restore {
 #rm -rf $(find "$trash" -mindepth 1 -mtime +21) # this seems a bit dangerous
 
 # display whenever user logs in
-if [[ $(find "$trash" -type f | wc -l) -gt 0 ]]; then
-    printf "Current trash size: \033[1;31m$(du -h --max-depth=0 $trash | cut -f1) ($(find "$trash" -type f | wc -l) files)\033[0m\n"
-fi
+function trashdisplay {
+    if [[ $(find "$trash" -type f | wc -l) -gt 0 ]]; then
+        printf "Current trash size: \033[1;31m$(du -h --max-depth=0 $trash | cut -f1) ($(find "$trash" -type f | wc -l) files)\033[0m\n"
+    fi
+}
