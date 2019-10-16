@@ -7,33 +7,33 @@ alias catbtrash="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/mast
 alias rm="saferm"
 
 trash="$HOME/.bash_trash/"
-mkdir -p $trash
+mkdir -p "$trash"
 
 function saferm {
-    mkdir -p $trash
-    mv $@ $trash &
+    mkdir -p "$trash"
+    mv $@ "$trash" &
 }
 
 alias viewtrash="find $trash -type f | sed "s|$trash||g"
-alias lstrash="ls -I . -I .. $trash"
-alias latrash="ls -laF -I . -I .. $trash"
-alias lhtrash="lh -laFh -I . -I .. $trash"
+alias lstrash="ls -I . -I .. \"$trash\""
+alias latrash="ls -laF -I . -I .. \"$trash\""
+alias lhtrash="lh -laFh -I . -I .. \"$trash\""
 
 alias emptytrash="rmtrash"
 function rmtrash {
-    rm -rf $@ $trash* &
+    rm -rf $@ "$trash*" &
 }
 
 function restore {
-    restore_dir=$2
-    if [[ -z $restore_dir ]]; then
+    restore_dir="$2"
+    if [[ -z "$restore_dir" ]]; then
         restore_dir="./"
     fi
-    mv -i $trash$1 $restore_dir
+    mv -i "$trash$1" "$restore_dir"
 }
 
 # remove all files more than 3 weeks old at login
-#rm -rf $(find $trash -mindepth 1 -mtime +21) # this seems a bit dangerous
+#rm -rf $(find "$trash" -mindepth 1 -mtime +21) # this seems a bit dangerous
 
 # display whenever user logs in
 if [[ $(find "$trash" -type f | wc -l) -gt 0 ]]; then
