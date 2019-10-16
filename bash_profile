@@ -68,6 +68,14 @@ function fhere {
 function ffind {
     find $1 -iname "*$2*"
 }
+# "search in files"
+function sif() {
+    grep -r "${@:2}" --exclude-dir=node_modules --exclude-dir=.git "$1" .
+}
+# "replace in files"
+function rif() {
+    find . -type f -exec sed -i "s|$1|$2|g" {} +
+}
 function lastedit {
     find $1 -type f -exec stat \{} --printf="%y\n" \; | sort -nr | head -1
 }
