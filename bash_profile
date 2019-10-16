@@ -59,7 +59,6 @@ function fcnt {
 function dhs {
     du -h $@ | sort -h
 }
-
 function fhere {
     find . -iname "*$1*"
 }
