@@ -1,26 +1,30 @@
 # bash trash
 
-alias srctrash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
-alias viewtrash="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
-alias cattrash="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash"
+alias srcbtrash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
+alias viewbtrash="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
+alias catbtrash="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash"
 
 alias rm="saferm"
 
 trash="$HOME/.trash/"
 mkdir -p $trash
 
-alias lstrash="ls -R  -I . -I .. $trash"
-alias latrash="ls -laFR -I . -I .. $trash"
-alias lhtrash="lh -laFhR -I . -I .. $trash"
-
 function saferm {
     mkdir -p $trash
     mv $@ $trash &
 }
+
+alias lstrash="ls -I . -I .. $trash"
+alias latrash="ls -laF -I . -I .. $trash"
+alias lhtrash="lh -laFh -I . -I .. $trash"
+alias lrtrash="lh -laFhR -I . -I .. $trash"
+alias viewtrash="find $trash -type f | cut -c$((${#trash}+1))-"
+
 alias emptytrash="rmtrash"
 function rmtrash {
     rm -rf $@ $trash* &
 }
+
 function restore {
     restore_dir=$2
     if [[ -z $restore_dir ]]; then
