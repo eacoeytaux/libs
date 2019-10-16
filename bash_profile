@@ -1,3 +1,6 @@
+# Ethan's bash profile
+# source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile)
+
 # if not running interactively then don't do anything
 [[ $- != *i* ]] && return
 
