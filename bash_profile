@@ -37,10 +37,7 @@ function cdl {
     cd "$1" && ls -laFh -I . -I ..
 }
 function cdup {
-    cdup_count="$1"
-    if [[ -z "$cdup_count" ]]; then
-        cdup_count="1"
-    fi
+    cdup_count="${1:-1}"
     for ((i = 1; i <= "$cdup_count"; i++)); do
         cd ../
     done
@@ -52,10 +49,7 @@ function bkup {
     cp "$1" ".$1.bkup_$(date +%Y_%m_%d_%M_%S)"
 }
 function fcnt {
-    fcnt_dir="$1"
-    if [[ -z "$fcnt_dir" ]]; then
-        fcnt_dir="."
-    fi
+    fcnt_dir="${1:-./}"
     echo $(ls "$fcnt_dir" | wc -l)
 }
 function dhs {
@@ -97,20 +91,14 @@ alias gd="git diff"
 
 # git functions
 function gitsquish {
-    branch_to_rebase="$1"
-    if [[ -z "$branch_to_rebase" ]]; then
-        branch_to_rebase=$(gitcurr)
-    fi
+    branch_to_rebase="${1:-$(gitcurr)}"
     git checkout "$branch_to_rebase"
     git pull
     num_to_squash=$(git cherry -v master | wc -l)
     git rebase -i HEAD~$num_to_squash
 }
 function gitrebase {
-    branch_to_rebase="$1"
-    if [[ -z "$branch_to_rebase" ]]; then
-        branch_to_rebase=$(gitcurr)
-    fi
+    branch_to_rebase="${1:-$(gitcurr)}"
     git checkout master
     git fetch -a
     git pull
