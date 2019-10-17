@@ -7,8 +7,11 @@ alias srcbashp="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/l
 alias viewbashp="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile)"
 alias catbashp="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile"
 
-export PS1="\e[0;36m\][\t \d] ${HOSTNAMEALIAS%%.*:-\h}:\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
-# export PS1="\e[0;36m[\t \d] \h:\w \u\$\e[m\]\n\[\]" # for macbooks
+if [[ -z "$HOSTNAMEALIAS" ]]; then
+    export PS1="\e[0;36m\][\t \d] \h:\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
+else
+    export PS1="\e[0;36m\][\t \d] ${HOSTNAMEALIAS%%.*}:\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
+fi
 export HISTTIMEFORMAT="[%T %F] "
 export HISTCONTROL=ignoreboth
 export EDITOR=vim
