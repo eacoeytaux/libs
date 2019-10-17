@@ -40,8 +40,7 @@ function cdl {
     cd "$1" && ls -laFh -I . -I ..
 }
 function cdup {
-    cdup_count="${1:-1}"
-    for ((i = 1; i <= "$cdup_count"; i++)); do
+    for ((i = 1; i <= "${1:-1}"; i++)); do
         cd ../
     done
 }
@@ -52,14 +51,13 @@ function bkup {
     cp "$1" ".$1.bkup_$(date +%Y_%m_%d_%M_%S)"
 }
 function fcnt {
-    fcnt_dir="${1:-./}"
-    echo $(ls "$fcnt_dir" | wc -l)
+    echo $(find "${1:-./}" -type f | wc -l)
 }
 function dhs {
     du -h $@ | sort -h
 }
 function fhere {
-    find . -iname "*$1*"
+    find ./ -iname "*$1*"
 }
 function ffind {
     find "$1" -iname "*$2*"
@@ -70,7 +68,7 @@ function sif() {
 }
 # "replace in files"
 function rif() {
-    find . -type f -exec sed -i "s|$1|$2|g" {} +
+    find ./ -type f -exec sed -i "s|$1|$2|g" {} +
 }
 function lastedit {
     find "$1" -type f -exec stat \{} --printf="%y\n" \; | sort -nr | head -1
