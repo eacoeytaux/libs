@@ -4,7 +4,7 @@ alias srcbtrash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/
 alias viewbtrash="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
 alias catbtrash="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash"
 
-alias rm="saferm"
+alias rm="echo \"rm is disabled, use saferm or \\rm instead\""
 
 trash="$HOME/.trash/"
 mkdir -p "$trash"
