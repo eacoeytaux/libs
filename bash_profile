@@ -3,11 +3,11 @@
 # if not running interactively then don't do anything
 [[ $- != *i* ]] && return
 
-alias srcbash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile)"
-alias viewbash="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile)"
-alias catbash="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile"
+alias srcbashp="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile)"
+alias viewbashp="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile)"
+alias catbashp="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile"
 
-export PS1="\e[0;36m\][\t \d] ${HOSTNAMEALIAS%%.*:\h}:\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
+export PS1="\e[0;36m\][\t \d] ${HOSTNAMEALIAS%%.*:-\h}:\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
 # export PS1="\e[0;36m[\t \d] \h:\w \u\$\e[m\]\n\[\]" # for macbooks
 export HISTTIMEFORMAT="[%T %F] "
 export HISTCONTROL=ignoreboth
