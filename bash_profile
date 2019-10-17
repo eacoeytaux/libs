@@ -8,6 +8,7 @@ alias viewbash="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/lib
 alias catbash="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile"
 
 export PS1="\e[0;36m\][\t \d] ${HOSTNAMEALIAS%%.*}:\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
+# export PS1="\e[0;36m[\t \d] \h:\w \u\$\e[m\]\n\[\]" # for macbooks
 export HISTTIMEFORMAT="[%T %F] "
 export HISTCONTROL=ignoreboth
 export EDITOR=vim
