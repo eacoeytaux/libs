@@ -21,7 +21,7 @@ alias lhtrash="lh -laFh -I . -I .. \"$trash\""
 
 alias emptytrash="rmtrash"
 function rmtrash {
-    \rm -rf $@ "$trash*" &
+    \rm -rf $@ "$trash"* &
 }
 
 function restore {
