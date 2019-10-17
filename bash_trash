@@ -25,10 +25,7 @@ function rmtrash {
 }
 
 function restore {
-    restore_dir="$2"
-    if [[ -z "$restore_dir" ]]; then
-        restore_dir="./"
-    fi
+    restore_dir="${2:-./}"
     mv -i "$trash$1" "$restore_dir"
 }
 
