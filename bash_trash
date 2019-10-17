@@ -14,7 +14,7 @@ function saferm {
     mv $@ "$trash" &
 }
 
-alias viewtrash="trashdisplay && echo "Files in trash:" && find $trash -type f | sed \"s|$trash||g\""
+alias viewtrash="trashdisplay && echo "Files in trash:" && find $trash -type f | sed \"s|$trash|- |g\""
 alias lstrash="ls -I . -I .. \"$trash\""
 alias latrash="ls -laF -I . -I .. \"$trash\""
 alias lhtrash="lh -laFh -I . -I .. \"$trash\""
