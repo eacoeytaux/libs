@@ -18,7 +18,7 @@ mkdir -p "$trash"
 # replaces rm by moving files to designated trash ~ usage: saferm <list of files to delete>
 function saferm {
     mkdir -p "$trash"
-    mv "$@" "$trash" &
+    mv "$@" "$trash"
 }
 alias srm="saferm"
 
@@ -32,7 +32,7 @@ alias lhtrash="lh -laFh -I . -I .. \"$trash\""
 # deletes all files/folders in trash ~ usage: rmtrash
 function rmtrash {
     mkdir -p "$trash"
-    \rm -rf $@ "$trash"* &
+    \rm -rf $@ "$trash"*
 }
 alias emptytrash="rmtrash"
 
