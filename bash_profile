@@ -84,7 +84,7 @@ function savesrc {
     savesrc_last_cmd=$(history | tail -2 | head -1 | cut -c 30-) # cut first 30 chars to remove date from history line
     savesrc_last_output_name=$(echo "$savesrc_last_cmd" | grep ">" | rev | cut -d'>' -f1 | rev | cut -c 2-)
     if [[ -n $savesrc_last_output_name ]]; then
-        echo "$savesrc_last_output_name src cmd: $savesrc_last_cmd"
+        echo "$savesrc_last_output_name: $savesrc_last_cmd"
         echo "$savesrc_last_cmd" > ${savesrc_last_output_name}.src_cmd
     else
         echo "no output file found"
