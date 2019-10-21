@@ -15,7 +15,8 @@ export HISTCONTROL=ignoreboth
 export EDITOR=vim
 export GREP_OPTIONS="--color=auto"
 
-#bash aliases
+# -- bash aliases and functions --
+
 alias S="sudo"
 alias view="vim -R"
 alias t="time"
@@ -29,8 +30,6 @@ alias psa="ps aux | head -1 && ps aux | grep"
 alias psaw="ps aux | head -1 && ps aux | grep ^$(whoami)"
 alias h="history"
 alias hg="history | grep"
-
-# bash functions
 
 # run last command as sudo ~ usage: please
 function please {
@@ -121,15 +120,13 @@ function savesrc {
     fi
 }
 
-# git aliases
+# -- git aliases and functions --
 
 alias gs="git status"
 alias gb="git branch"
 alias gc="git checkout"
 alias gg="git grep --color=auto -n -i"
 alias gd="git diff"
-
-# git functions
 
 # git rebase all commits into one
 function gitsquish {
