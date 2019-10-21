@@ -49,6 +49,8 @@ function trashdisplay {
     trash_file_count=$(find "$trash" -type f | wc -l)
     if [[ $trash_file_count -gt 0 ]]; then
         printf "Current trash size: \033[1;31m$(du -h --max-depth=0 $trash | cut -f1) ($trash_file_count files)\033[0m\n"
+    else
+        echo "Trash is empty"
     fi
 }
 trashdisplay
