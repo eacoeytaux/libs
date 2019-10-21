@@ -1,29 +1,41 @@
 # bash trash
 
+# source this file in bash session
 alias srcbtrash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
+
+# view this file
 alias viewbtrash="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
+
+# cat this file
 alias catbtrash="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash"
 
+# let user know "rm" should not be used
 alias rm="echo \"rm is disabled, use saferm or \\rm instead\""
 
 trash="$HOME/.trash/"
 mkdir -p "$trash"
 
+# replaces rm by moving files to designated trash ~ usage: saferm <list of files to delete>
 function saferm {
     mkdir -p "$trash"
     mv "$@" "$trash" &
 }
 
+# view files in trash
 alias viewtrash="trashdisplay && echo \"Files in trash:\" && find $trash -type f | sed \"s|$trash|- |g\""
+
 alias lstrash="ls -I . -I .. \"$trash\""
 alias latrash="ls -laF -I . -I .. \"$trash\""
 alias lhtrash="lh -laFh -I . -I .. \"$trash\""
 
-alias emptytrash="rmtrash"
+# deletes all files/folders in trash ~ usage: rmtrash
 function rmtrash {
+    mkdir -p "$trash"
     \rm -rf $@ "$trash"* &
 }
+alias emptytrash="rmtrash"
 
+# moves file out of trash ~ usage: restore <file to restore> <dir to restore to (default ./)>
 function restore {
     mv -i "$trash$1" "${2:-./}"
 }
