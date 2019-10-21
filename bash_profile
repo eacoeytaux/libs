@@ -52,7 +52,7 @@ function fcnt {
     echo $(find "${1:-./}" -type f | wc -l)
 }
 function dhs {
-    du -h $@ | sort -h
+    du -h "$@" | sort -h
 }
 function fhere {
     find ./ -iname "*$1*"
