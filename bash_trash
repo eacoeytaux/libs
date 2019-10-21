@@ -11,7 +11,7 @@ mkdir -p "$trash"
 
 function saferm {
     mkdir -p "$trash"
-    mv $@ "$trash" &
+    mv "$@" "$trash" &
 }
 
 alias viewtrash="trashdisplay && echo \"Files in trash:\" && find $trash -type f | sed \"s|$trash|- |g\""
