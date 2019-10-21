@@ -46,7 +46,7 @@ function mkcd {
     mkdir -pv "$1" && cd "$1"
 }
 function bkup {
-    cp "$1" ".$1.bkup_$(date +%Y_%m_%d_%M_%S)"
+    cp "$1" ".$1.bkup_$(date +%Y%m%d_%H%M%S)"
 }
 function fcnt {
     echo $(find "${1:-./}" -type f | wc -l)
