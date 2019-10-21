@@ -20,6 +20,7 @@ function saferm {
     mkdir -p "$trash"
     mv "$@" "$trash" &
 }
+alias srm="saferm"
 
 # view files in trash
 alias viewtrash="trashdisplay && echo \"Files in trash:\" && find $trash -type f | sed \"s|$trash|- |g\""
