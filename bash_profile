@@ -26,18 +26,6 @@ alias psaw="ps aux | head -1 && ps aux | grep ^$(whoami)"
 alias h="history"
 alias hg="history | grep"
 
-# override exit to confirm if not in an ssh session
-function exit {
-    if [[ -z $SSH_TTY ]]; then
-        read -r -p "you are not in an SSH session, are you sure? [y/n]" exit_res
-        if [[ $exit_res =~ ^[Yy]$ ]]; then
-            \exit
-        fi
-    else
-        \exit
-    fi
-}
-
 # run last command as sudo ~ usage: please
 function please {
     sudo $(history 2 | cut -d ']' -f2 | cut -c2- | head -1)
