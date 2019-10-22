@@ -75,7 +75,7 @@ function ffind {
 
 # search for string in files in current directory ~ usage: sif <string to search> <additional git options>
 function sif() {
-    grep -r "${@:2}" --exclude-dir=.git --exclude-dir=node_modules "$1" ./
+    grep -r -n "${@:2}" --exclude-dir=.git --exclude-dir=node_modules "$1" ./
 }
 
 # replace string in files in current directory ~ usage: rif <string to replace> <replacement string>
