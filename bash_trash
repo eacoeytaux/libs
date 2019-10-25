@@ -1,5 +1,8 @@
 # bash trash
 
+# if not running interactively then don't do anything
+[[ $- != *i* ]] && return
+
 # source this file in bash session
 alias srcbtrash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
 
