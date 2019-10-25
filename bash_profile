@@ -12,19 +12,20 @@ export EDITOR=vim
 
 # -- bash aliases and functions --
 
-alias S="sudo"
+alias S="sudo "
+alias watch="watch "
 alias view="vim -R"
-alias t="time"
+alias t="time "
 alias la="ls -laF -I . -I .."
 alias lh="ls -laFh -I . -I .."
-alias rmf="rm -rf"
-alias mkdir="mkdir -pv"
-alias dh="du -h"
-alias rsync="rsync -Ph"
-alias psa="ps aux | head -1 && ps aux | grep"
-alias psaw="ps aux | head -1 && ps aux | grep ^$(whoami)"
-alias h="history"
-alias hg="history | grep"
+alias rmf="rm -rf "
+alias mkdir="mkdir -pv "
+alias dh="du -h "
+alias rsync="rsync -Ph "
+alias psa="ps aux | head -1 && ps aux | grep "
+alias psaw="ps aux | head -1 && ps aux | grep ^$(whoami) "
+alias h="history "
+alias hg="history | grep "
 
 # run last command as sudo ~ usage: please
 function please {
