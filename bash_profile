@@ -162,6 +162,6 @@ function gitupdate {
 
 # alias for this file
 
-alias srcbashp="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile)"
-alias viewbashp="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile)"
-alias catbashp="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile"
+alias srcbashp="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile) "
+alias viewbashp="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile) "
+alias catbashp="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile "
