@@ -12,6 +12,13 @@ export EDITOR=vim
 
 # -- bash aliases and functions --
 
+function expandalias {
+    alias "$1" | cut -d\' -f2
+}
+function xpnalias {
+    expandalias "$1"
+}
+
 alias S="sudo "
 alias watch="watch "
 alias view="vim -R"
