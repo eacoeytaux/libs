@@ -63,14 +63,9 @@ function dhs {
     du -h "$@" | sort -h
 }
 
-# find file in current dir ~ usage: fhere <name of file>
-function fhere {
-    find ./ -iname "*$1*"
-}
-
-# find file in arbitrary dir ~ usage: fhere <dir> <name of file>
+# find file in dir ~ usage: fhere <name of file> <dir to search (default: ./)>
 function ffind {
-    find "$1" -iname "*$2*"
+    find "${2:-./}" -iname "*$1*"
 }
 
 # search for string in files in current directory ~ usage: sif <string to search> <additional git options>
