@@ -20,9 +20,9 @@ function xpnalias {
 }
 
 alias S="sudo "
-alias watch="watch "
 alias view="vim -R"
 alias t="time "
+alias w="watch "
 alias la="ls -laF -I . -I .."
 alias lh="ls -laFh -I . -I .."
 alias rmf="rm -rf "
@@ -43,6 +43,7 @@ function please {
 function cdl {
     cd "$1" && ls -laFh -I . -I ..
 }
+export -f cdl
 
 # cd .. an arbitrary number of times ~ usage: cdup <number>
 function cdup {
@@ -50,31 +51,37 @@ function cdup {
         cd ../
     done
 }
+export -f cdup
 
 # mkdir && cd ~ usage: mkcd <dir>
 function mkcd {
     mkdir -pv "$1" && cd "$1"
 }
+export -f mkcd
 
 # create back up of file ~ usage: bkup <file to back up>
 function bkup {
     cp "$1" ".$1.bkup_$(date +%Y%m%d_%H%M%S)"
 }
+export -f bkup
 
 # count number of files in a directory ~ usage: fcnt <dir (default: ./)>
 function fcnt {
     echo $(find "${1:-./}" -type f | wc -l)
 }
+export -f fcnt
 
 # size of folders sorted ~ usage: dhs <dir> <additional du options>
 function dhs {
     du -h "$@" | sort -h
 }
+export -f dhs
 
 # find file in dir ~ usage: fhere <name of file> <dir to search (default: ./)>
 function ffind {
     find "${2:-./}" -iname "*$1*"
 }
+export -f ffind
 
 # search for string in files in current directory ~ usage: sif <string to search> <additional git options>
 function sif() {
