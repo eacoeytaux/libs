@@ -42,7 +42,7 @@ function please {
 
 # cd && lh ~ usage: cdl <dir>
 function cdl {
-    cd "$1" && ls -laFh -I . -I ..
+    cd "$1" && ls -1 -I . -I .. --color-auto
 }
 
 # cd .. an arbitrary number of times ~ usage: cdup <number>
