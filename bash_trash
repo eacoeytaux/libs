@@ -21,7 +21,7 @@ mkdir -p "$trash"
 # replaces rm by moving files to designated trash ~ usage: saferm <list of files to delete>
 function saferm {
     mkdir -p "$trash"
-    rsync --quiet --dirs --del "${@:2}" "$1" "$trash"
+    rsync --quiet --dirs --del "$@" "$trash"
 }
 alias srm="saferm "
 
