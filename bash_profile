@@ -61,10 +61,11 @@ function bkup {
     cp "$1" ".$1.bkup_$(date +%Y%m%d_%H%M%S)"
 }
 
-# count number of files in a directory ~ usage: fcnt <dir (default: ./)>
-function fcnt {
+# count number of files in a directory ~ usage: filecount <dir (default: ./)>
+function filecount {
     echo $(find "${1:-./}" -type f | wc -l)
 }
+alias fcnt="filecount "
 
 # size of folders sorted ~ usage: dhs <dir> <additional du options>
 function dhs {
