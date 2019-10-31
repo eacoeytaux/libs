@@ -25,7 +25,7 @@ alias t="time "
 alias w="watch "
 alias ls="ls -1 -aF -I . -I .. --color=auto "
 function lh {
-    ls -laFh -I . -I .. --color=auto "$@"
+    ls -laFh -I . -I .. --color=auto "$1"
 }
 alias rmf="rm -rf "
 alias mkdir="mkdir -pv "
@@ -41,9 +41,14 @@ function please {
     sudo $(history 2 | cut -d ']' -f2 | cut -c2- | head -1)
 }
 
-# cd && lh ~ usage: cdl <dir>
-function cdl {
+# cd && ls ~ usage: cdl <dir>
+function cdls {
     cd "$1" && ls -1 -aF -I . -I .. --color=auto
+}
+
+# cd && lh ~ usage: cdl <dir>
+function cdlh {
+    cd "$1" && ls -1 -laFh -I . -I .. --color=auto
 }
 
 # cd .. an arbitrary number of times ~ usage: cdup <number>
