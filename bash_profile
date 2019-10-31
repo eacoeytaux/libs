@@ -25,7 +25,7 @@ alias t="time "
 alias w="watch "
 alias ls="ls -1 -aF -I . -I .. --color=auto "
 function lh {
-    ls -laFh -I . -I .. --color=auto "$1"
+    ls -laFh -I . -I .. --color=auto "$@"
 }
 alias rmf="rm -rf "
 alias mkdir="mkdir -pv "
