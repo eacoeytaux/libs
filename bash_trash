@@ -21,15 +21,17 @@ mkdir -p "$trash"
 # replaces rm by moving files to designated trash ~ usage: saferm <list of files to delete>
 function saferm {
     mkdir -p "$trash"
-    mv -f "$@" "$trash"
+    for arg in "$@"; do
+        mv -f "$arg" "$trash$arg.btrash"
+    done
 }
 alias srm="saferm "
 
 # view files in trash
-alias viewtrash="trashdisplay && echo \"Files in trash:\" && find $trash -type f | sed \"s|$trash|- |g\" "
+alias viewtrash="trashdisplay && echo \"Files in trash:\" && find $trash -type f -prune -o -name "*.btrash" | sed \"s|$trash|- |g\" "
 
-alias lstrash="ls -1 -aF -I . -I .. --color=auto \"$trash\" "
-alias lhtrash="lh -aFlh -I . -I .. --color=auto \"$trash\" "
+alias lstrash="ls -1 -aF -I "." -I ".." -I "*.btrash" --color=auto \"$trash\" "
+alias lhtrash="lh -aFlh -I "." -I ".." -I "*.btrash" --color=auto \"$trash\" "
 
 # deletes all files/folders in trash ~ usage: rmtrash
 function rmtrash {
