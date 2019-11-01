@@ -65,7 +65,7 @@ function mkcd {
 
 # create back up of file ~ usage: bkup <file to back up>
 function bkup {
-    cp "$1" ".$1.bkup_$(date +%Y%m%d_%H%M%S)"
+    cp -i "$1" ".$1.bkup_$(date +%Y%m%d_%H%M%S)"
 }
 
 # count number of files in a directory ~ usage: filecount <dir (default: ./)>
