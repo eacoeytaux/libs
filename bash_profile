@@ -4,7 +4,7 @@
 [[ $- != *i* ]] && return
 
 export PS1="\e[0;36m\][\t \d] \h:\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
-[[ -n "$HOSTNAMEALIAS" ]] && export PS1="\e[0;36m\][\t \d] ${HOSTNAMEALIAS%%.*}:\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
+[[ -n "$HOSTNAMEALIAS" ]] && export PS1="\e[0;36m\][\t \d] \e[1;33m\]${HOSTNAMEALIAS%%.*}\e[0;36m\]:\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
 
 export HISTTIMEFORMAT="[%T %F] "
 export HISTCONTROL=ignoreboth
