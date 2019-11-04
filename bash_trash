@@ -15,7 +15,11 @@ alias catbtrash="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/mast
 # let user know "rm" should not be used
 alias rm="echo \"rm is disabled, use saferm or \\rm instead\""
 
-trash="$HOME/.trash/"
+if [[ -z $trash ]]; then
+    trash="$HOME/.trash/"
+else
+    echo "trash is already set to \"$trash\""
+fi
 mkdir -p "$trash"
 
 # replaces rm by moving files to designated trash ~ usage: saferm <list of files to delete>
