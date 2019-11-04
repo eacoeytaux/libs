@@ -15,7 +15,7 @@ export EDITOR=vim
 function expandalias {
     alias "$1" | cut -d\' -f2
 }
-function xpnalias {
+function xpnd {
     expandalias "$1"
 }
 
