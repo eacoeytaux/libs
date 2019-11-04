@@ -32,8 +32,8 @@ alias srm="saferm "
 # view files in trash
 alias viewtrash="trashdisplay && echo \"Files in trash:\" && find $trash -type f | sed \"s|$trash|- |g\" "
 
-alias lstrash="ls -1 -aF -I "." -I ".." --color=auto \"$trash\" "
-alias lhtrash="lh -aFlh -I "." -I ".." --color=auto \"$trash\" "
+alias lstrash="ls -1 -aF --color=auto \"$trash\" "
+alias lhtrash="lh -aFlh --color=auto \"$trash\" "
 
 # deletes all files/folders in trash ~ usage: rmtrash
 function rmtrash {
