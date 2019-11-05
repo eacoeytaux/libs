@@ -40,7 +40,11 @@ function trash {
             fi
             ;;
         "files")
-            echo "Files in trash:" && find $trash -type f | sed "s|$trash|- |g"
+            if [[ $(find "$trash" -type f | wc -l) -gt 0 ]]; then
+                echo "files in trash:" && find $trash -type f | sed "s|$trash|- |g"
+            else
+                echo "trash is empty"
+            fi
             ;;
         "loc" | "location")
             echo "$trash"
