@@ -25,34 +25,37 @@ function saferm {
 }
 alias srm="saferm "
 
-# view files in trash
-alias viewtrash="trashdisplay && echo \"Files in trash:\" && find $trash -type f | sed \"s|$trash|- |g\" "
-
-alias lstrash="ls -1 -aF --color=auto \"$trash\" "
-alias lhtrash="lh -aFlh --color=auto \"$trash\" "
-
-# deletes all files/folders in trash ~ usage: rmtrash
-function rmtrash {
+function trash {
     mkdir -p "$trash"
-    find "$trash" -mindepth 1 -delete
+    case "$1" in
+        "rm" | "empty")
+            find "$trash" -mindepth 1 -delete
+            ;;
+        "info")
+            trash_file_count=$(find "$trash" -type f | wc -l)
+            if [[ $trash_file_count -gt 0 ]]; then
+                printf "current trash size: \033[1;31m$(du -h --max-depth=0 $trash | cut -f1) ($trash_file_count files)\033[0m\n"
+            else
+                echo "trash is empty"
+            fi
+            ;;
+        "files")
+            echo "Files in trash:" && find $trash -type f | sed "s|$trash|- |g"
+            ;;
+        "loc" | "location")
+            echo "$trash"
+            ;;
+        "ls")
+            ls -1 -aF --color=auto "$trash"
+            ;;
+        "lh")
+            ls -aFlh --color=auto "$trash"
+            ;;
+        *)
+            echo "valid trash commands: rm/empty, info, files, loc, ls, lh"
+            ;;
+    esac
 }
-alias emptytrash="rmtrash "
-
-# moves file out of trash ~ usage: restore <file to restore> <dir to restore to (default ./)>
-function restore {
-    mv -i "$trash$1" "${2:-./}"
-}
-
-# remove all files more than 3 weeks old at login
-#rm -rf $(find "$trash" -mindepth 1 -mtime +21) # this seems a bit dangerous
 
 # display whenever user logs in
-function trashdisplay {
-    trash_file_count=$(find "$trash" -type f | wc -l)
-    if [[ $trash_file_count -gt 0 ]]; then
-        printf "current trash size: \033[1;31m$(du -h --max-depth=0 $trash | cut -f1) ($trash_file_count files)\033[0m\n"
-    else
-        echo "trash is empty"
-    fi
-}
-trashdisplay
+trash info
