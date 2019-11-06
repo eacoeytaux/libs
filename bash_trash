@@ -25,6 +25,11 @@ function saferm {
 }
 alias srm="saferm "
 
+# moves file out of trash ~ usage: restore <file to restore> <dir to restore to (default ./)>
+function restore {
+    mv -i "$trash$1" "${2:-./}"
+}
+
 function trash {
     mkdir -p "$trash"
     case "$1" in
