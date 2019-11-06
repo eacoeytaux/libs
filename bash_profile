@@ -13,7 +13,7 @@ export EDITOR=vim
 # -- bash aliases and functions --
 
 function expandalias {
-    [[ -n $(alias | \grep "^alias $1=") ]] && alias "$1" | cut -d\' -f2
+    [[ -n $(alias | grep "^alias $1=") ]] && alias "$1" | cut -d\' -f2
 }
 function xpnd {
     expandalias "$1"
