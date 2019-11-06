@@ -128,6 +128,7 @@ function savesrc {
 
 export GREP_OPTIONS="--color=auto"
 
+alias g="git "
 alias gs="git status "
 alias gb="git branch "
 alias gc="git checkout "
