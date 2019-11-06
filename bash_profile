@@ -30,7 +30,7 @@ alias mkdir="mkdir -pv "
 alias dh="du -h "
 alias rsync="rsync -Ph "
 alias psa="ps aux | head -1 && ps aux | grep "
-alias psaw="ps aux | head -1 && ps aux | grep ^$(whoami) "
+alias psaw="ps aux | head -1 && ps aux | grep \"^$(whoami)\" "
 alias h="history "
 alias hg="history | grep "
 
