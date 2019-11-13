@@ -46,7 +46,7 @@ function trash {
             ;;
         "files")
             if [[ $(find "$trash" -type f | wc -l) -gt 0 ]]; then
-                find $trash -type f | sed "s|$trash|- |g"
+                find $trash -type f | sed "s|$trash||g"
             else
                 echo "trash is empty"
             fi
