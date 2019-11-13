@@ -55,10 +55,10 @@ function trash {
             echo "$trash"
             ;;
         "ls")
-            ls -1 -aF --color=auto "$trash"
+            ls -1 -aF -I . -I .. --color=auto "$trash"
             ;;
         "lh")
-            ls -aFlh --color=auto "$trash"
+            ls -aFlh -I . -I .. --color=auto "$trash"
             ;;
         *)
             echo "valid trash commands: rm/empty, info, files, loc, ls, lh"
