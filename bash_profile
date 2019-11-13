@@ -23,8 +23,8 @@ alias S="sudo "
 alias view="vim -R"
 alias t="time "
 alias w="watch "
-alias ls="ls -1 -aF --color=auto "
-alias lh="ls -laFh --color=auto "
+alias ls="ls -1 -aF -I . -I .. --color=auto "
+alias lh="ls -laFh -I . -I .. --color=auto "
 alias rmf="rm -rf "
 alias mkdir="mkdir -pv "
 alias dh="du -h "
@@ -41,12 +41,12 @@ function please {
 
 # cd && ls ~ usage: cdl <dir>
 function cdls {
-    cd "$1" && ls -1 -aF --color=auto
+    cd "$1" && ls -1 -aF -I . -I .. --color=auto
 }
 
 # cd && lh ~ usage: cdl <dir>
 function cdlh {
-    cd "$1" && ls -1 -laFh --color=auto
+    cd "$1" && ls -1 -laFh -I . -I .. --color=auto
 }
 
 # cd .. an arbitrary number of times ~ usage: cdup <number>
