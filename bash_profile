@@ -36,7 +36,7 @@ alias hg="history | grep "
 
 # run last command as sudo ~ usage: please
 function please {
-    sudo $(history 2 | cut -d ']' -f2 | cut -c2- | head -1)
+    sudo $(history 2 | cut -d ']' -f2- | cut -c2- | head -1)
 }
 
 # cd && ls ~ usage: cdl <dir>
