@@ -179,7 +179,7 @@ function gitupdate {
     git push origin -f $(gitcurr)
 }
 
-# alias for this file
+# aliases for this file
 
 alias srcbashp="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile) "
 alias viewbashp="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile) "
