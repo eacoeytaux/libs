@@ -1,25 +1,28 @@
 # Ethan's git aliases/functions
 
-export GREP_OPTIONS="--color=auto"
+# if not running interactively then don't do anything
+[[ $- != *i* ]] && return
 
 alias g="git "
 alias gs="git status "
 alias gb="git branch "
 alias gc="git checkout "
-alias gg="git grep --color=auto -n -i "
 alias gd="git diff "
+alias gg="git grep --color=auto -n -i "
 
 # go to git master and pull from repo
 function gitlatest {
     git checkout master
     git pull origin master
 }
+export -f gitlatest
 
 # create a new branch from the latest version of the repo
 function gitnew {
     gitlatest
     git checkout -b "$1"
 }
+export -f gitnew
 
 # git rebase all commits into one
 function gitsquish {
@@ -29,6 +32,7 @@ function gitsquish {
     num_to_squash=$(git cherry -v master | wc -l)
     git rebase -i HEAD~$num_to_squash
 }
+export -f gitsquish
 
 # auto git rebase
 function gitrebase {
@@ -40,11 +44,13 @@ function gitrebase {
     git fetch origin
     git rebase origin/master
 }
+export -f gitrebase
 
 # current git branch
 function gitcurr {
     git branch | grep "\* " | cut -d '*' -f2 | cut -c2-
 }
+export -f gitcurr
 
 # nearly-auto rebase change into last commit and force push
 function gitupdate {
@@ -52,6 +58,7 @@ function gitupdate {
     git rebase -i HEAD~2
     git push origin -f $(gitcurr)
 }
+export -f gitupdate
 
 # aliases for this file
 
