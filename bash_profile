@@ -43,7 +43,7 @@ alias psa="ps aux | head -1 && ps aux | grep "
 alias psaw="ps aux | head -1 && ps aux | grep \"^$(whoami)\" "
 alias psas="ps aux | grep "
 alias psaws="ps aux | grep \"^$(whoami)\" "
-alias cpuuse="ps aux | grep \"^$(whoami)\" | awk '{sum+=\$3}END{print sum}' "
+alias cpuuse="ps aux | grep \"^$(whoami)\" | awk \"{sum+=\\\$3}END{print sum}\" "
 
 # run last command as sudo ~ usage: please
 function please {
