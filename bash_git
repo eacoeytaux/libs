@@ -1,0 +1,60 @@
+# Ethan's git aliases/functions
+
+export GREP_OPTIONS="--color=auto"
+
+alias g="git "
+alias gs="git status "
+alias gb="git branch "
+alias gc="git checkout "
+alias gg="git grep --color=auto -n -i "
+alias gd="git diff "
+
+# go to git master and pull from repo
+function gitlatest {
+    git checkout master
+    git pull origin master
+}
+
+# create a new branch from the latest version of the repo
+function gitnew {
+    gitlatest
+    git checkout -b "$1"
+}
+
+# git rebase all commits into one
+function gitsquish {
+    branch_to_rebase="${1:-$(gitcurr)}"
+    git checkout "$branch_to_rebase"
+    git pull
+    num_to_squash=$(git cherry -v master | wc -l)
+    git rebase -i HEAD~$num_to_squash
+}
+
+# auto git rebase
+function gitrebase {
+    branch_to_rebase="${1:-$(gitcurr)}"
+    git checkout master
+    git fetch -a
+    git pull
+    git checkout "$branch_to_rebase"
+    git fetch origin
+    git rebase origin/master
+}
+
+# current git branch
+function gitcurr {
+    git branch | grep "\* " | cut -d '*' -f2 | cut -c2-
+}
+
+# nearly-auto rebase change into last commit and force push
+function gitupdate {
+    git commit -am 'msg'
+    git rebase -i HEAD~2
+    git push origin -f $(gitcurr)
+}
+
+# aliases for this file
+
+alias srcbgit="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_git) "
+alias viewbgit="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_git) "
+alias catbgit="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_git "
