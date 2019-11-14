@@ -135,6 +135,12 @@ alias gc="git checkout "
 alias gg="git grep --color=auto -n -i "
 alias gd="git diff "
 
+# go to git master and pull from repo
+function gitlatest {
+    git checkout master
+    git pull origin master
+}
+
 # git rebase all commits into one
 function gitsquish {
     branch_to_rebase="${1:-$(gitcurr)}"
