@@ -3,15 +3,6 @@
 # if not running interactively then don't do anything
 [[ $- != *i* ]] && return
 
-# source this file in bash session
-alias srcbtrash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash) "
-
-# view this file
-alias viewbtrash="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash) "
-
-# cat this file
-alias catbtrash="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash "
-
 # let user know "rm" should not be used
 alias rm="echo \"rm is disabled, use saferm or \\rm instead\""
 
@@ -68,3 +59,9 @@ function trash {
 
 # display whenever user logs in
 trash info
+
+# aliases for this file
+
+alias srcbtrash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash) "
+alias viewbtrash="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash) "
+alias catbtrash="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash "
