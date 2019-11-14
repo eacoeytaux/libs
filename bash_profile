@@ -8,7 +8,10 @@ export PS1="\e[0;36m\][\t \d] \e[0;35m\]\h\e[0;36m\]:\w \u\\$\e[m\]\n\[$(tput sg
 
 export HISTTIMEFORMAT="[%T %F] "
 export HISTCONTROL=ignoreboth
+
 export EDITOR=vim
+
+export GREP_OPTIONS="--color=auto"
 
 # -- bash aliases and functions --
 
@@ -19,20 +22,28 @@ function xpnd {
     expandalias "$1"
 }
 
+# mgmt aliases
 alias S="sudo "
-alias view="vim -R"
 alias t="time "
 alias w="watch "
+alias h="history "
+alias hg="history | grep "
+alias view="vim -R "
+
+# file aliases
 alias ls="ls -1 -aF -I . -I .. --color=auto "
 alias lh="ls -laFh -I . -I .. --color=auto "
 alias rmf="rm -rf "
 alias mkdir="mkdir -pv "
 alias dh="du -h "
 alias rsync="rsync -Ph "
+
+# misc. aliases
 alias psa="ps aux | head -1 && ps aux | grep "
 alias psaw="ps aux | head -1 && ps aux | grep \"^$(whoami)\" "
-alias h="history "
-alias hg="history | grep "
+alias psas="ps aux | grep "
+alias psaws="ps aux | grep \"^$(whoami)\" "
+alias cpuuse="ps aux | grep \"^$(whoami)\" | awk \"{sum+=\$3}END{print sum}\" "
 
 # run last command as sudo ~ usage: please
 function please {
@@ -122,61 +133,6 @@ function savesrc {
     else
         echo "no output file found"
     fi
-}
-
-# -- git aliases and functions --
-
-export GREP_OPTIONS="--color=auto"
-
-alias g="git "
-alias gs="git status "
-alias gb="git branch "
-alias gc="git checkout "
-alias gg="git grep --color=auto -n -i "
-alias gd="git diff "
-
-# go to git master and pull from repo
-function gitlatest {
-    git checkout master
-    git pull origin master
-}
-
-# create a new branch from the latest version of the repo
-function gitnew {
-    gitlatest
-    git checkout -b "$1"
-}
-
-# git rebase all commits into one
-function gitsquish {
-    branch_to_rebase="${1:-$(gitcurr)}"
-    git checkout "$branch_to_rebase"
-    git pull
-    num_to_squash=$(git cherry -v master | wc -l)
-    git rebase -i HEAD~$num_to_squash
-}
-
-# auto git rebase
-function gitrebase {
-    branch_to_rebase="${1:-$(gitcurr)}"
-    git checkout master
-    git fetch -a
-    git pull
-    git checkout "$branch_to_rebase"
-    git fetch origin
-    git rebase origin/master
-}
-
-# current git branch
-function gitcurr {
-    git branch | grep "\* " | cut -d '*' -f2 | cut -c2-
-}
-
-# nearly-auto rebase change into last commit and force push
-function gitupdate {
-    git commit -am 'msg'
-    git rebase -i HEAD~2
-    git push origin -f $(gitcurr)
 }
 
 # aliases for this file
