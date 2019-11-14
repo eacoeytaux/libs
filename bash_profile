@@ -141,6 +141,12 @@ function gitlatest {
     git pull origin master
 }
 
+# create a new branch from the latest version of the repo
+function gitnew {
+    gitlatest
+    git checkout -b "$1"
+}
+
 # git rebase all commits into one
 function gitsquish {
     branch_to_rebase="${1:-$(gitcurr)}"
