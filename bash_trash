@@ -14,12 +14,14 @@ function saferm {
     mkdir -p "$trash"
     mv -f "$@" "$trash"
 }
+export -f saferm
 alias srm="saferm "
 
 # moves file out of trash ~ usage: restore <file to restore> <dir to restore to (default ./)>
 function restore {
     mv -i "$trash$1" "${2:-./}"
 }
+export -f restore
 
 function trash {
     mkdir -p "$trash"
@@ -56,6 +58,7 @@ function trash {
             ;;
     esac
 }
+export -f trash
 
 # display whenever user logs in
 trash info
