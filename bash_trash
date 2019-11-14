@@ -1,4 +1,4 @@
-# bash trash
+# Ethan's bash trash
 
 # if not running interactively then don't do anything
 [[ $- != *i* ]] && return
