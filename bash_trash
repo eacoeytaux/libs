@@ -17,6 +17,14 @@ function saferm {
 export -f saferm
 alias srm="saferm "
 
+# same as saferm, just with sudo
+function ssaferm {
+    mkdir -p "$trash"
+    sudo mv -f "$@" "$trash"
+}
+export -f ssaferm
+alias ssrm="ssaferm "
+
 # moves file out of trash ~ usage: restore <file to restore> <dir to restore to (default ./)>
 function restore {
     mv -i "$trash$1" "${2:-./}"
