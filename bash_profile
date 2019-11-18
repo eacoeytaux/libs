@@ -18,9 +18,11 @@ export GREP_OPTIONS="--color=auto"
 function expandalias {
     [[ -n $(alias | grep "^alias $1=") ]] && alias "$1" | cut -d\' -f2-
 }
+export -f expandalias
 function xpnd {
     expandalias "$1"
 }
+export -f xpnd
 
 # mgmt aliases
 alias S="sudo "
@@ -130,16 +132,19 @@ export -f pskill
 function vennleft {
     comm -23 <(sort "$1" | uniq) <(sort "$2" | uniq)
 }
+export -f vennleft
 
 # easier way of running comm to find lines unique to second file ~ usage: vennright <file1> <file2>
 function vennright {
     comm -13 <(sort "$1" | uniq) <(sort "$2" | uniq)
 }
+export -f vennright
 
 # easier way of running comm to find lines shared by both files ~ usage: vennmiddle <file1> <file2>
 function vennmiddle {
     comm -12 <(sort "$1" | uniq) <(sort "$2" | uniq)
 }
+export -f vennmiddle
 
 # sum all numbers in a specified column ~ usage: sumcol <column number> <file>
 function sumcol {
