@@ -126,6 +126,21 @@ function pskill {
 }
 export -f pskill
 
+# easier way of running comm to find lines unique to first file ~ usage: vennleft <file1> <file2>
+function vennleft {
+    comm -23 <(sort "$1" | uniq) <(sort "$2" | uniq)
+}
+
+# easier way of running comm to find lines unique to second file ~ usage: vennright <file1> <file2>
+function vennright {
+    comm -13 <(sort "$1" | uniq) <(sort "$2" | uniq)
+}
+
+# easier way of running comm to find lines shared by both files ~ usage: vennmiddle <file1> <file2>
+function vennmiddle {
+    comm -12 <(sort "$1" | uniq) <(sort "$2" | uniq)
+}
+
 # sum all numbers in a specified column ~ usage: sumcol <column number> <file>
 function sumcol {
     awk "{sum+=\$$1}END{print sum}" "$2"
