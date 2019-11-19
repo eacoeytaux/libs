@@ -3,6 +3,8 @@
 # if not running interactively then don't do anything
 [[ $- != *i* ]] && return
 
+# -- general exports and settings --
+
 export PS1="\e[0;36m\][\t \d] \e[0;35m\]\h\e[0;36m\]:\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
 [[ -n "$HOSTNAMEALIAS" ]] && export PS1="\e[0;36m\][\t \d] \e[0;35m\]${HOSTNAMEALIAS%%.*}\e[0;36m\]:\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
 
@@ -118,7 +120,7 @@ export -f rif
 
 # print date of latest edit in a folder ~ usage: lastedit <dir (default: ./)>
 function lastedit {
-    find "${1:-./}" -type f -exec stat \{} --printf="%y\n" \; | sort -nr | head -1
+    find "${1:-./}" -type f -exec stat \{} --printf="%y\n" \; | sort -nr | head -1 | cut -c1-19
 }
 export -f lastedit
 
@@ -127,6 +129,12 @@ function pskill {
     kill -9 $(ps aux | grep "$1" | awk '{print $2}')
 }
 export -f pskill
+
+# easier way of running comm to find lines shared by both files ~ usage: vennmiddle <file1> <file2>
+function vennmiddle {
+    comm -12 <(sort "$1" | uniq) <(sort "$2" | uniq)
+}
+export -f vennmiddle
 
 # easier way of running comm to find lines unique to first file ~ usage: vennleft <file1> <file2>
 function vennleft {
@@ -140,11 +148,17 @@ function vennright {
 }
 export -f vennright
 
-# easier way of running comm to find lines shared by both files ~ usage: vennmiddle <file1> <file2>
-function vennmiddle {
-    comm -12 <(sort "$1" | uniq) <(sort "$2" | uniq)
+# like vennleft but in preserved order and keeps duplicates ~ usage: vennleft+ <file1> <file2>
+function vennleft+ {
+    grep -xf <(comm -23 <(sort "$1" | uniq) <(sort "$2" | uniq)) "$1"
 }
-export -f vennmiddle
+export -f vennleft+
+
+# like vennright but in preserved order and keeps duplicates ~ usage: vennright+ <file1> <file2>
+function vennright+ {
+    grep -xf <(comm -13 <(sort "$1" | uniq) <(sort "$2" | uniq)) "$2"
+}
+export -f vennright+
 
 # sum all numbers in a specified column ~ usage: sumcol <column number> <file>
 function sumcol {
