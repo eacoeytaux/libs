@@ -150,13 +150,13 @@ export -f vennright
 
 # like vennleft but in preserved order and keeps duplicates ~ usage: vennleft+ <file1> <file2>
 function vennleft+ {
-    grep -xf <(comm -23 <(sort "$1" | uniq) <(sort "$2" | uniq)) "$1"
+    grep --color=never -xf <(comm -23 <(sort "$1" | uniq) <(sort "$2" | uniq)) "$1"
 }
 export -f vennleft+
 
 # like vennright but in preserved order and keeps duplicates ~ usage: vennright+ <file1> <file2>
 function vennright+ {
-    grep -xf <(comm -13 <(sort "$1" | uniq) <(sort "$2" | uniq)) "$2"
+    grep --color=never -xf <(comm -13 <(sort "$1" | uniq) <(sort "$2" | uniq)) "$2"
 }
 export -f vennright+
 
