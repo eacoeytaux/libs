@@ -94,7 +94,13 @@ function filecount {
 export -f filecount
 alias fcnt="filecount "
 
-# size of folders sorted ~ usage: dhs <dir> <additional du options>
+# size of folder only ~ usage: dhc <dir> <additional du options>
+function dhc {
+    du -hc "$@" | tail -1 | cut -f1
+}
+export -f dhc
+
+# size of folder and subfolders sorted ~ usage: dhs <dir> <additional du options>
 function dhs {
     du -h "$@" | sort -h
 }
