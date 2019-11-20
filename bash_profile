@@ -93,8 +93,20 @@ function filecount {
 }
 export -f filecount
 alias fcnt="filecount "
-alias linecount="wc -l "
-alias lcnt="wc -l "
+
+# count number of lines in a file ~ usage: linecount <file>
+function linecount {
+    < "$1" wc -l
+}
+export -f linecount
+alias lcnt="linecount "
+
+# count number of bytes in a file ~ usage: bytecount <file>
+function bytecount {
+    < "$1" wc -c
+}
+export -f bytecount
+alias bcnt="bytecount "
 
 # size of folder only ~ usage: dhc <dir> <additional du options>
 function dhc {
