@@ -224,7 +224,7 @@ function savesrc {
     savesrc_last_output_name=$(echo "$savesrc_last_cmd" | grep ">" | rev | cut -d'>' -f1 | rev | sed -e 's/^[ \t]*//')
     if [[ -n $savesrc_last_output_name ]]; then
         echo "$savesrc_last_output_name: $savesrc_last_cmd"
-        echo "$savesrc_last_cmd" > ${savesrc_last_output_name}.src_cmd
+        echo "$savesrc_last_cmd" > .${savesrc_last_output_name}.src_cmd
     else
         echo "no output file found"
     fi
