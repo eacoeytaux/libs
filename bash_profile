@@ -93,6 +93,8 @@ function filecount {
 }
 export -f filecount
 alias fcnt="filecount "
+alias linecount="wc -l "
+alias lcnt="wc -l "
 
 # size of folder only ~ usage: dhc <dir> <additional du options>
 function dhc {
