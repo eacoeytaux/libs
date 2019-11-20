@@ -96,14 +96,14 @@ alias fcnt="filecount "
 
 # count number of lines in a file ~ usage: linecount <file>
 function linecount {
-    < "$1" wc -l
+    wc -l "$1" | cut -d' ' -f1
 }
 export -f linecount
 alias lcnt="linecount "
 
 # count number of bytes in a file ~ usage: bytecount <file>
 function bytecount {
-    < "$1" wc -c
+    wc -c "$1" | cut -d' ' -f1
 }
 export -f bytecount
 alias bcnt="bytecount "
