@@ -136,6 +136,14 @@ function pskill {
 }
 export -f pskill
 
+function isuniq {
+    if [[ $(wc -l "$1") == $(sort "$1" | uniq | wc -l) ]]; then
+        echo "yes"
+    else
+        echo "no"
+    fi
+}
+
 # easier way of running comm to find lines shared by both files ~ usage: vennmiddle <file1> <file2>
 function vennmiddle {
     comm -12 <(sort "$1" | uniq) <(sort "$2" | uniq)
