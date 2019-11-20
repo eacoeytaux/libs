@@ -154,6 +154,16 @@ function isuniq {
 }
 export -f isuniq
 
+# returns 0 when a file is unique (trailing "s" for silent) ~ usage: isuniqs <file>
+function isuniqs {
+    if [[ $(< "$1" wc -l) == $(sort "$1" | uniq | wc -l) ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+export -f isuniqs
+
 # easier way of running comm to find lines shared by both files ~ usage: vennmiddle <file1> <file2>
 function vennmiddle {
     comm -12 <(sort "$1" | uniq) <(sort "$2" | uniq)
