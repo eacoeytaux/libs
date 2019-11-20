@@ -146,7 +146,7 @@ export -f sortinplace
 
 # says whether or not every line in a file is unique ~ usage: isuniq <file>
 function isuniq {
-    if [[ $(wc -l "$1") == $(sort "$1" | uniq | wc -l) ]]; then
+    if [[ $(< "$1" wc -l) == $(sort "$1" | uniq | wc -l) ]]; then
         echo "yes"
     else
         echo "no"
