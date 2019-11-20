@@ -136,6 +136,13 @@ function pskill {
 }
 export -f pskill
 
+# sorts a file in place ~ usage: sortinplace <file> <additional sort options>
+function sortinplace {
+    sort "${@:2}" -o "$1" "$1"
+}
+export -f sortinplace
+
+# says whether or not every line in a file is unique ~ usage: isuniq <file>
 function isuniq {
     if [[ $(wc -l "$1") == $(sort "$1" | uniq | wc -l) ]]; then
         echo "yes"
@@ -143,6 +150,7 @@ function isuniq {
         echo "no"
     fi
 }
+export -f isuniq
 
 # easier way of running comm to find lines shared by both files ~ usage: vennmiddle <file1> <file2>
 function vennmiddle {
