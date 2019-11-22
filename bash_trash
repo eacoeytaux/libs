@@ -20,7 +20,7 @@ alias srm="saferm "
 # same as saferm, just with sudo
 function ssaferm {
     mkdir -p "$trash"
-    sudo mv -f "$@" "$trash"
+    sudo mv -f "$@" "$trash" && sudo chown -r "$(whoami)" "$trash"
 }
 export -f ssaferm
 alias ssrm="ssaferm "
