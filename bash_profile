@@ -87,12 +87,17 @@ function bkup {
 }
 export -f bkup
 
-# count number of files in a directory ~ usage: filecount <dir (default: ./)>
-function filecount {
-    echo $(find "${1:-./}" -type f | wc -l)
+# print the nth line of a file ~ usage: line <num> <file>
+function line {
+    sed "$1q;d" "$2"
 }
-export -f filecount
-alias fcnt="filecount "
+export -f line
+
+# print lines between given values from a file ~ usage: lines <start-num> <end-num> <file>
+function lines {
+    sed -n "$1,$2p" "$3"
+}
+export -f lines
 
 # count number of lines in a file ~ usage: linecount <file>
 function linecount {
@@ -101,12 +106,26 @@ function linecount {
 export -f linecount
 alias lcnt="linecount "
 
+# count number of chars in a file ~ usage: charcount <file>
+function charcount {
+    wc -m "$1" | cut -d' ' -f1
+}
+export -f charcount
+alias ccnt="charcount "
+
 # count number of bytes in a file ~ usage: bytecount <file>
 function bytecount {
     wc -c "$1" | cut -d' ' -f1
 }
 export -f bytecount
 alias bcnt="bytecount "
+
+# count number of files in a directory ~ usage: filecount <dir (default: ./)>
+function filecount {
+    echo $(find "${1:-./}" -type f | wc -l)
+}
+export -f filecount
+alias fcnt="filecount "
 
 # size of folder only ~ usage: dhc <dir> <additional du options>
 function dhc {
