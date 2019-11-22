@@ -106,19 +106,19 @@ function linecount {
 export -f linecount
 alias lcnt="linecount "
 
-# count number of chars in a file ~ usage: charcount <file>
-function charcount {
-    wc -m "$1" | cut -d' ' -f1
-}
-export -f charcount
-alias ccnt="charcount "
-
 # count number of bytes in a file ~ usage: bytecount <file>
 function bytecount {
     wc -c "$1" | cut -d' ' -f1
 }
 export -f bytecount
 alias bcnt="bytecount "
+
+# count number of chars in a file ~ usage: charcount <file>
+function charcount {
+    wc -m "$1" | cut -d' ' -f1
+}
+export -f charcount
+alias ccnt="charcount "
 
 # count number of files in a directory ~ usage: filecount <dir (default: ./)>
 function filecount {
