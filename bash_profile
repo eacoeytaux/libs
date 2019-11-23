@@ -246,7 +246,7 @@ function rerunswitch {
 # save command used to generate file (must be separate command immediately following command to save) ~ usage: savesrc
 function savesrc {
     savesrc_last_cmd_raw=$(history 2 | head -1 | cut -d']' -f2- | cut -c2-)
-    savesrc_last_cmd=$($(echo "$savesrc_last_cmd_raw" | grep ">" | rev | cut -d'>' -f2- | rev)
+    savesrc_last_cmd=$(echo "$savesrc_last_cmd_raw" | grep ">" | rev | cut -d'>' -f2- | rev)
     savesrc_last_output_name=$(echo "$savesrc_last_cmd_raw" | grep ">" | rev | cut -d'>' -f1 | rev | sed -e 's/^[ \t]*//')
     if [[ -n $savesrc_last_output_name ]]; then
         echo "$savesrc_last_output_name: $savesrc_last_cmd"
