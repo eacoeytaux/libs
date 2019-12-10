@@ -87,6 +87,18 @@ function bkup {
 }
 export -f bkup
 
+# find string matches only in a specified column ~ usage: matchcol <string to match> <file to search> <column num (default 0/all)>
+function matchcol {
+    LC_ALL=C awk -F $"\t" "\$${3:-0} ~ /$1/ {print \$0}" $2
+}
+export -f matchcol
+
+# find string matches only in a specified column and print linenum ~ usage: matchcol <string to match> <file to search> <column num (default 0/all)>    #~matchcoln
+function matchcoln {                                                                                                                                    #~matchcoln
+    LC_ALL=C awk -F $"\t" "\$${3:-0} ~ /$1/ {print NR\":\"\$0}" $2                                                                                      #~matchcoln
+}                                                                                                                                                       #~matchcoln
+export -f matchcoln                                                                                                                                     #~matchcoln
+
 # print the nth line of a file ~ usage: line <num> <file>
 function line {
     sed "$1q;d" "$2"
