@@ -89,13 +89,13 @@ export -f bkup
 
 # find string matches only in a specified column ~ usage: matchcol <string to match> <file to search> <column num (default 0/all)>
 function matchcol {
-    LC_ALL=C awk -F $"\t" "\$${3:-0} ~ /$1/ {print \$0}" $2
+    LC_ALL=C awk -F $"\t" "\$$1 ~ /$2/ {print \$0}" $3
 }
 export -f matchcol
 
 # find string matches only in a specified column and print linenum ~ usage: matchcol <string to match> <file to search> <column num (default 0/all)>
 function matchcoln {
-    LC_ALL=C awk -F $"\t" "\$${3:-0} ~ /$1/ {print NR\":\"\$0}" $2
+    LC_ALL=C awk -F $"\t" "\$$1 ~ /$2/ {print NR\":\"\$0}" $3
 }
 export -f matchcoln
 
