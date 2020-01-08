@@ -13,7 +13,7 @@ export HISTCONTROL=ignoreboth
 
 export EDITOR=vim
 
-export GREP_OPTIONS="--color=auto"
+# export GREP_OPTIONS="--color=auto"
 
 # -- bash aliases and functions --
 
