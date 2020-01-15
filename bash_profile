@@ -17,6 +17,7 @@ export EDITOR=vim
 
 # -- bash aliases and functions --
 
+alias printfunction="declare -f "
 function expandalias {
     [[ -n $(alias | grep "^alias $1=") ]] && alias "$1" | cut -d\' -f2
 }
