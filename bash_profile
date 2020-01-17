@@ -246,7 +246,7 @@ export -f sumcol
 
 # convert to raw binary
 function binary {
-    xxd -c16 -b "$1" | cut -d' '-f2-17 | tr -d' '| tr -d'\n'
+    xxd -c16 -b "$1" | cut -d' ' -f2-17 | tr -d' '| tr -d'\n'
 }
 export -f binary
 
