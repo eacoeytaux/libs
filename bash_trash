@@ -12,6 +12,9 @@ mkdir -p "$trash"
 # replaces rm by moving files to designated trash ~ usage: saferm <list of files to delete>
 function saferm {
     mkdir -p "$trash"
+    for saferm_arg in "$@"; do # remove files if one with same name exists
+        [[ -f "$trash/$saferm_arg" ]] || [[ -d "$trash/$saferm_arg" ]] && \rm -rf "$trash/$saferm_arg"
+    done
     mv -f "$@" "$trash"
 }
 export -f saferm
@@ -20,6 +23,9 @@ alias srm="saferm "
 # same as saferm, just with sudo
 function ssaferm {
     mkdir -p "$trash"
+    for ssaferm_arg in "$@"; do # remove files if one with same name exists
+        [[ -f "$trash/$ssaferm_arg" ]] || [[ -d "$trash/$ssaferm_arg" ]] && \rm -rf "$trash/$ssaferm_arg"
+    done
     sudo mv -f "$@" "$trash" && sudo chown -r "$(whoami)" "$trash"
 }
 export -f ssaferm
