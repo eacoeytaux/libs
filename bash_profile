@@ -52,7 +52,7 @@ alias cpuuse="ps aux | grep \"^$(whoami)\" | grep -v -e \"ps aux\$\" -e \"grep \
 
 # run last command as sudo ~ usage: please
 function please {
-    sudo $(history 2 | cut -d ']' -f2- | cut -c2- | head -1)
+    sudo $(history 2 | cut -d "]" -f2- | cut -c2- | head -1)
 }
 export -f please
 
@@ -114,21 +114,21 @@ export -f lines
 
 # count number of lines in a file ~ usage: linecount <file>
 function linecount {
-    wc -l "$1" | cut -d' ' -f1
+    wc -l "$1" | cut -d " " -f1
 }
 export -f linecount
 alias lcnt="linecount "
 
 # count number of bytes in a file ~ usage: bytecount <file>
 function bytecount {
-    wc -c "$1" | cut -d' ' -f1
+    wc -c "$1" | cut -d " " -f1
 }
 export -f bytecount
 alias bcnt="bytecount "
 
 # count number of chars in a file ~ usage: charcount <file>
 function charcount {
-    wc -m "$1" | cut -d' ' -f1
+    wc -m "$1" | cut -d " " -f1
 }
 export -f charcount
 alias ccnt="charcount "
@@ -246,21 +246,21 @@ export -f sumcol
 
 # convert to raw binary
 function binary {
-    xxd -c16 -b "$1" | cut -d' ' -f2-17 | tr -d' '| tr -d'\n'
+    xxd -c16 -b "$1" | cut -d " " -f2-17 | tr -d " " | tr -d "\n"
 }
 export -f binary
 
 # rerun last command with certain string replaced ~ usage: rerunswitch <string-to-be-replaced> <replacement-string>
 function rerunswitch {
-    rerunswitch_last_cmd_raw=$(history 2 | head -1 | cut -d']' -f2- | cut -c2-)
+    rerunswitch_last_cmd_raw=$(history 2 | head -1 | cut -d "]" -f2- | cut -c2-)
     bash -c "$(echo "$rerunswitch_last_cmd_raw" | sed "s/$1/$2/g")"
 }
 
 # save command used to generate file (must be separate command immediately following command to save) ~ usage: savesrc
 function savesrc {
-    savesrc_last_cmd_raw=$(history 2 | head -1 | cut -d']' -f2- | cut -c2-)
-    savesrc_last_cmd=$(echo "$savesrc_last_cmd_raw" | grep ">" | rev | cut -d'>' -f2- | rev)
-    savesrc_last_output_name=$(echo "$savesrc_last_cmd_raw" | grep ">" | rev | cut -d'>' -f1 | rev | sed -e 's/^[ \t]*//')
+    savesrc_last_cmd_raw=$(history 2 | head -1 | cut -d "]" -f2- | cut -c2-)
+    savesrc_last_cmd=$(echo "$savesrc_last_cmd_raw" | grep ">" | rev | cut -d ">" -f2- | rev)
+    savesrc_last_output_name=$(echo "$savesrc_last_cmd_raw" | grep ">" | rev | cut -d ">" -f1 | rev | sed -e "s/^[ \t]*//")
     if [[ -n $savesrc_last_output_name ]]; then
         echo "$savesrc_last_output_name: $savesrc_last_cmd"
         echo "$savesrc_last_cmd" > ${savesrc_last_output_name}.src_cmd
