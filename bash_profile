@@ -182,6 +182,13 @@ function pskill {
 }
 export -f pskill
 
+# provides a sequence of numbers that has an equation applied to sequential numbers starting from 1 ~ usage: seqeq <length of sequence> <equation to apply with "x" as variable>
+# example: `seqeq 5 "(x*3)+5"` produces `8 11 14 17 20`
+function seqeq {
+    echo $(for x in $(seq $1); do seqeq_x=$(($2)); echo $seqeq_x; done) 
+}
+export -f seqeq
+
 # sorts a file in place ~ usage: sortinplace <file> <additional sort options>
 function sortinplace {
     sort "${@:2}" -o "$1" "$1"
