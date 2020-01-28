@@ -58,13 +58,13 @@ export -f please
 
 # cd && ls ~ usage: cdl <dir>
 function cdls {
-    cd "$1" && ls -1 -aF -I . -I .. --color=auto
+    cd "$1" && ls
 }
 export -f cdls
 
 # cd && lh ~ usage: cdl <dir>
 function cdlh {
-    cd "$1" && ls -1 -laFh -I . -I .. --color=auto
+    cd "$1" && lh
 }
 export -f cdlh
 
