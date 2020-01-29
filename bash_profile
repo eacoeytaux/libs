@@ -114,8 +114,7 @@ export -f lines
 
 # count number of lines in a file ~ usage: linecount <file>
 function linecount {
-    declare -i linecount_input=${1:-$(</dev/stdin)}
-    < "$linecount_input" wc -l | cut -d " " -f1
+    wc -l "$1" | cut -d " " -f1
 }
 export -f linecount
 alias lcnt="linecount "
