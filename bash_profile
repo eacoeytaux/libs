@@ -160,13 +160,13 @@ export -f ffind
 
 # search for string in files in current directory ~ usage: sif <string to search> <additional git options>
 function sif {
-    grep -r -n "${@:2}" --exclude-dir=.git --exclude-dir=node_modules "$1" ./
+    grep -r -n ${@:2} --exclude-dir=.git --exclude-dir=node_modules "$1" ./
 }
 export -f sif
 
 # replace string in files in current directory ~ usage: rif <string to replace> <replacement string>
 function rif {
-    find ./ -type f -exec sed -i "s|$1|$2|g" {} +
+    find ./ ${@:3} -type f -exec sed -i "s|$1|$2|g" {} +
 }
 export -f rif
 
