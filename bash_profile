@@ -31,10 +31,10 @@ export -f xpnd
 alias S="sudo "
 alias t="time "
 alias w="watch "
+alias p="head -10 "
 alias h="history "
 alias hg="history | grep "
 alias view="vim -R "
-alias p="head -10 "
 
 # file aliases
 alias ls="ls -1 -aF -I . -I .. --color=auto "
