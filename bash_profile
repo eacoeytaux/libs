@@ -34,6 +34,7 @@ alias w="watch "
 alias h="history "
 alias hg="history | grep "
 alias view="vim -R "
+alias p="| head -10 "
 
 # file aliases
 alias ls="ls -1 -aF -I . -I .. --color=auto "
