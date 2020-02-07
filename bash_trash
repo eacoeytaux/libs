@@ -26,7 +26,7 @@ function ssaferm {
     for ssaferm_arg in "$@"; do # remove files if one with same name exists
         [[ -f "$trash/$ssaferm_arg" ]] || [[ -d "$trash/$ssaferm_arg" ]] && \rm -rf "$trash/$ssaferm_arg"
     done
-    sudo mv -f "$@" "$trash" && sudo chown -r "$(whoami)" "$trash"
+    sudo mv -f "$@" "$trash" && sudo chown -R "$(whoami)" "$trash"
 }
 export -f ssaferm
 alias ssrm="ssaferm "
