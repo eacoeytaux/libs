@@ -62,10 +62,10 @@ function trash {
             echo "$trash"
             ;;
         "ls")
-            ls
+            ls "$trash"
             ;;
         "lh")
-            lh
+            lh "$trash"
             ;;
         *)
             echo "valid trash commands: rm/empty, info, files, loc, ls, lh"
