@@ -37,6 +37,7 @@ function restore {
 }
 export -f restore
 
+TRASH_EMPTY_MESSAGE="trash is empty"
 function trash {
     mkdir -p "$trash"
     case "$1" in
@@ -48,14 +49,14 @@ function trash {
             if [[ $trash_file_count -gt 0 ]]; then
                 printf "current trash size: \033[1;31m$(du -h --max-depth=0 $trash | cut -f1) ($trash_file_count files)\033[0m\n"
             else
-                echo "trash is empty"
+                echo "$TRASH_EMPTY_MESSAGE"
             fi
             ;;
         "files")
             if [[ $(find "$trash" -type f | wc -l) -gt 0 ]]; then
                 find "$trash" -type f | sed "s|$trash||g"
             else
-                echo "trash is empty"
+                echo "$TRASH_EMPTY_MESSAGE"
             fi
             ;;
         "loc" | "location")
@@ -65,14 +66,14 @@ function trash {
             if [[ $(find "$trash" -type f | wc -l) -gt 0 ]]; then
                 ls "$trash"
             else
-                echo "trash is empty"
+                echo "$TRASH_EMPTY_MESSAGE"
             fi
             ;;
         "lh")
             if [[ $(find "$trash" -type f | wc -l) -gt 0 ]]; then
                 lh "$trash"
             else
-                echo "trash is empty"
+                echo "$TRASH_EMPTY_MESSAGE"
             fi
             ;;
         *)
