@@ -283,3 +283,6 @@ export -f savesrc
 alias srcbashp="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile) "
 alias viewbashp="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile) "
 alias catbashp="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile "
+
+# misc
+# vim profile ~ https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim
