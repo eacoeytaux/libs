@@ -37,8 +37,8 @@ alias hg="history | grep "
 alias view="vim -R "
 
 # file aliases
-alias ls="ls -1 -aF -I . -I .. --color=auto "
-alias lh="ls -laFh -I . -I .. --color=auto "
+alias ls="ls -1 -aFH -I . -I .. --color=auto "
+alias lh="ls -laFHh -I . -I .. --color=auto "
 alias rmf="rm -rf "
 alias mkdir="mkdir -pv "
 alias dh="du -h "
