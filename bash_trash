@@ -52,33 +52,25 @@ function trash {
                 echo "$TRASH_EMPTY_MESSAGE"
             fi
             ;;
-        "files")
-            if [[ $trash_file_count -gt 0 ]]; then
-                find "$trash" -type l | sed "s|$trash||g"
-                find "$trash" -type f | sed "s|$trash||g"
-            else
-                echo "$TRASH_EMPTY_MESSAGE"
-            fi
-            ;;
         "loc" | "location")
             echo "$trash"
             ;;
         "ls")
             if [[ $trash_file_count -gt 0 ]]; then
-                ls "$trash"
+                ls "$trash" | sed s"|^$trash:|trash:|g" | sed "s|$trash|trash/|g"
             else
                 echo "$TRASH_EMPTY_MESSAGE"
             fi
             ;;
         "lh")
             if [[ $trash_file_count -gt 0 ]]; then
-                lh "$trash"
+                lh -R "$trash" | sed s"|^$trash:|trash:|g" | sed "s|$trash|trash/|g"
             else
                 echo "$TRASH_EMPTY_MESSAGE"
             fi
             ;;
         *)
-            echo "valid trash commands: rm/empty, info, files, loc, ls, lh"
+            echo "valid trash commands: rm/empty, info, loc, ls, lh"
             ;;
     esac
 }
