@@ -33,7 +33,7 @@ alias t="time "
 alias w="watch "
 alias p="head -10 "
 alias h="history "
-alias hg="history | grep "
+alias hg="history | grep"
 alias view="vim -R "
 
 # file aliases
@@ -45,11 +45,11 @@ alias dh="du -h "
 alias rsync="rsync -Ph "
 
 # misc. aliases
-alias psa="ps aux | head -1 && ps aux | grep "
-alias psaw="ps aux | head -1 && ps aux | grep \"^$(whoami)\" "
-alias psas="ps aux | grep "
-alias psaws="ps aux | grep \"^$(whoami)\" "
-alias cpuuse="ps aux | grep \"^$(whoami)\" | grep -v -e \"ps aux\$\" -e \"grep \^$(whoami)\$\" -e \"grep -v -e ps aux\\\$ -e grep \\\^$(whoami)\\\$\" | awk \"{sum+=\\\$3}END{print sum}\" "
+alias psa="ps aux | head -1 && ps aux | grep"
+alias psaw="ps aux | head -1 && ps aux | grep \"^$(whoami)\""
+alias psas="ps aux | grep"
+alias psaws="ps aux | grep \"^$(whoami)\""
+alias cpuuse="ps aux | grep \"^$(whoami)\" | grep -v -e \"ps aux\$\" -e \"grep \^$(whoami)\$\" -e \"grep -v -e ps aux\\\$ -e grep \\\^$(whoami)\\\$\" | awk \"{sum+=\\\$3}END{print sum}\""
 
 # run last command as sudo ~ usage: please
 function please {
@@ -280,9 +280,9 @@ export -f savesrc
 
 # aliases for this file
 
-alias srcbashp="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile) "
-alias viewbashp="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile) "
-alias catbashp="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile "
+alias srcbashp="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile)"
+alias viewbashp="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile)"
+alias catbashp="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_profile"
 
 # misc
 # vim profile ~ https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim
