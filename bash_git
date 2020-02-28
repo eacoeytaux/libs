@@ -62,6 +62,6 @@ export -f gitupdate
 
 # aliases for this file
 
-alias srcbgit="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_git) "
-alias viewbgit="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_git) "
-alias catbgit="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_git "
+alias srcbgit="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_git)"
+alias viewbgit="view <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_git)"
+alias catbgit="curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_git"
