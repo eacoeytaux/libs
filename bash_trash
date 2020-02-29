@@ -57,7 +57,7 @@ function trash {
             ;;
         "ls")
             if [[ $trash_file_count -gt 0 ]]; then
-                ls "$trash" | sed s"|^$trash:|trash:|g" | sed "s|$trash|trash/|g"
+                ls -R "$trash" | sed s"|^$trash:|trash:|g" | sed "s|$trash|trash/|g"
             else
                 echo "$TRASH_EMPTY_MESSAGE"
             fi
