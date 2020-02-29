@@ -13,7 +13,7 @@ export HISTCONTROL=ignoreboth
 
 export EDITOR=vim
 
-# export GREP_OPTIONS="--color=auto"
+# export GREP_OPTIONS="--color=always"
 
 # -- bash aliases and functions --
 
@@ -37,8 +37,8 @@ alias hg="history | grep"
 alias view="vim -R "
 
 # file aliases
-alias ls="ls -1 -aFH -I . -I .. --color=auto "
-alias lh="ls -laFHh -I . -I .. --color=auto "
+alias ls="ls -1 -aFH -I . -I .. --color=always "
+alias lh="ls -laFHh -I . -I .. --color=always "
 alias rmf="rm -rf "
 alias mkdir="mkdir -pv "
 alias dh="du -h "
