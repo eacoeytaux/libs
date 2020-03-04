@@ -4,7 +4,7 @@
 [[ $- != *i* ]] && return
 
 # let user know "rm" should not be used
-alias rm="echo \"rm is disabled, use saferm or \\rm instead\""
+alias rm="echo \"rm is disabled, use srm (saferm) or \\rm instead\""
 
 [[ -z $trash ]] && trash="$HOME/.trash/"
 mkdir -p "$trash"
