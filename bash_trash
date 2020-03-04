@@ -21,7 +21,7 @@ export -f saferm
 alias srm="saferm "
 
 # same as saferm, just with sudo
-function ssaferm {
+function Ssaferm {
     mkdir -p "$trash"
     for ssaferm_arg in "$@"; do # remove files if one with same name exists
         [[ -f "$trash/$ssaferm_arg" ]] || [[ -d "$trash/$ssaferm_arg" ]] && \rm -rf "$trash/$ssaferm_arg"
@@ -29,8 +29,8 @@ function ssaferm {
     done
     sudo chown -R "$(whoami)" "$trash"
 }
-export -f ssaferm
-alias ssrm="ssaferm "
+export -f Ssaferm
+alias Ssrm="Ssaferm "
 
 # moves file out of trash ~ usage: restore <file to restore> <dir to restore to (default ./)>
 function restore {
