@@ -14,7 +14,7 @@ function saferm {
     mkdir -p "$trash"
     for saferm_arg in "$@"; do # remove files if one with same name exists, then mv/unlink
         [[ -f "$trash/$saferm_arg" ]] || [[ -d "$trash/$saferm_arg" ]] && \rm -rf "$trash/$saferm_arg"
-        [[ ! -L "$saferm_arg" ]] && mv -f "$saferm_arg" "$trash" || unlink "$saferm_arg"
+        f [[ -L "$ssaferm_arg" ]]; then unlink "$ssaferm_arg"; else mv -f "$ssaferm_arg" "$trash"; fi
     done
 }
 export -f saferm
@@ -25,7 +25,7 @@ function Ssaferm {
     mkdir -p "$trash"
     for ssaferm_arg in "$@"; do # remove files if one with same name exists
         [[ -f "$trash/$ssaferm_arg" ]] || [[ -d "$trash/$ssaferm_arg" ]] && \rm -rf "$trash/$ssaferm_arg"
-        [[ ! -L "$ssaferm_arg" ]] && sudo mv -f "$ssaferm_arg" "$trash" || sudo unlink "$ssaferm_arg"
+        if [[ -L "$ssaferm_arg" ]]; then sudo unlink "$ssaferm_arg"; else sudo mv -f "$ssaferm_arg" "$trash"; fi
     done
     sudo chown -R "$(whoami)" "$trash"
 }
