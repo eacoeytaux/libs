@@ -14,7 +14,7 @@ function saferm {
     mkdir -p "$trash"
     for saferm_arg in "$@"; do # remove files if one with same name exists, then mv/unlink
         [[ -f "$trash/$saferm_arg" ]] || [[ -d "$trash/$saferm_arg" ]] && \rm -rf "$trash/$saferm_arg"
-        f [[ -L "$ssaferm_arg" ]]; then unlink "$ssaferm_arg"; else mv -f "$ssaferm_arg" "$trash"; fi
+        if [[ -L "$ssaferm_arg" ]]; then unlink "$ssaferm_arg"; else mv -f "$ssaferm_arg" "$trash"; fi
     done
 }
 export -f saferm
