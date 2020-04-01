@@ -4,7 +4,14 @@
 [[ $- != *i* ]] && return
 
 # let user know "rm" should not be used
-alias rm="echo \"rm is disabled, use srm (saferm) or \\rm instead\""
+alias rm="echo \"rm is disabled, use srm (saferm) or frm (forcerm) instead\""
+
+# allow \rm -r
+function forcerm {
+    rm -r "$@"
+}
+export -f forcerm
+alias frm="forcerm "
 
 [[ -z $trash ]] && trash="$HOME/.trash/"
 mkdir -p "$trash"
