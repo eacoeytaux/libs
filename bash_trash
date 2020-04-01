@@ -8,7 +8,7 @@ alias rm="echo \"rm is disabled, use srm (saferm) or frm (forcerm) instead\""
 
 # allow \rm -r
 function forcerm {
-    rm -r "$@"
+    \rm -r "$@"
 }
 export -f forcerm
 alias frm="forcerm "
