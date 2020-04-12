@@ -46,10 +46,10 @@ alias rsync="rsync -Ph "
 
 # misc. aliases
 alias psa="ps aux | head -1 && ps aux | grep "
-alias psaw="ps aux | head -1 && ps aux | grep \"^$(whoami)\" --color=never"
+alias psaw="ps aux | head -1 && ps aux | grep \"^$(whoami) \" --color=never"
 alias psas="ps aux | grep"
-alias psaws="ps aux | grep \"^$(whoami)\" --color=never"
-alias cpuuse="ps aux | grep \"^$(whoami)\" | grep -v -e \"ps aux\$\" -e \"grep \^$(whoami)\$\" -e \"grep -v -e ps aux\\\$ -e grep \\\^$(whoami)\\\$\" | awk \"{sum+=\\\$3}END{print sum}\""
+alias psaws="ps aux | grep \"^$(whoami) \" --color=never"
+alias cpuuse="ps aux | grep \"^$(whoami) \" | grep -v -e \"ps aux\$\" -e \"grep \^$(whoami) \$\" -e \"grep -v -e ps aux\\\$ -e grep \\\^$(whoami) \\\$\" | awk \"{sum+=\\\$3}END{print sum}\""
 
 # run last command as sudo ~ usage: please
 function please {
