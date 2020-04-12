@@ -84,9 +84,6 @@ function trash {
 }
 export -f trash
 
-# display whenever user logs in
-trash info
-
 # aliases for this file
 
 alias srcbtrash="source <(curl -sN https://raw.githubusercontent.com/eacoeytaux/libs/master/bash_trash)"
