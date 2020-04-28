@@ -54,7 +54,7 @@ export -f gitcurr
 
 # nearly-auto rebase change into last commit and force push
 function gitupdate {
-    git commit -am 'msg'
+    git commit -m 'msg'
     git rebase -i HEAD~2
     git push origin -f $(gitcurr)
 }
