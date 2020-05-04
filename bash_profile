@@ -136,7 +136,7 @@ alias ccnt="charcount "
 
 # count number of files in a directory ~ usage: filecount <dir (default: ./)>
 function filecount {
-    echo $(find "${1:-./}" -type f,l | wc -l)
+    echo $(find "${1:-./}" -type f | wc -l)
 }
 export -f filecount
 alias fcnt="filecount "
