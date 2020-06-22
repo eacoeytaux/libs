@@ -9,8 +9,8 @@ function showgitbranch {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-export PS1="\e[0;36m\][\t \d] \e[0;35m\]\h\e[0;36m\]:\$(showgitbranch)\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
-[[ -n "$HOSTNAMEALIAS" ]] && export PS1="\e[0;36m\][\t \d] \e[0;35m\]${HOSTNAMEALIAS%%.*}\e[0;36m\]:\w \u\\$\e[m\]\n\[$(tput sgr0)\]"
+export PS1="\e[0;36m\][\t \d] \e[0;35m\]\h\e[0;36m\]:\w\$(showgitbranch) \u\\$\e[m\]\n\[$(tput sgr0)\]"
+[[ -n "$HOSTNAMEALIAS" ]] && export PS1="\e[0;36m\][\t \d] \e[0;35m\]${HOSTNAMEALIAS%%.*}\e[0;36m\]:\w\$(showgitbranch) \u\\$\e[m\]\n\[$(tput sgr0)\]"
 
 export HISTTIMEFORMAT="[%T %F] "
 export HISTCONTROL=ignoreboth
