@@ -4,11 +4,11 @@
 [[ $- != *i* ]] && return
 
 alias g="git "
-alias gs="git status"
 alias gb="git branch"
 alias gc="git checkout"
 alias gd="git diff"
 alias gg="git grep --color=auto -n -i"
+alias gs="git status"
 
 # go to git master and pull from repo
 function gitlatest {
