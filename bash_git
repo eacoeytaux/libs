@@ -12,36 +12,36 @@ alias gs="git status"
 
 # go to git master and pull from repo
 function gitlatest {
-    git checkout master
+    git checkout master && \
     git pull origin master
 }
 export -f gitlatest
 
 # create a new branch from the latest version of the repo
 function gitnew {
-    gitlatest
+    gitlatest && \
     git checkout -b "$1"
 }
 export -f gitnew
 
 # git rebase all commits into one
 function gitsquish {
-    branch_to_rebase="${1:-$(gitcurr)}"
-    git checkout "$branch_to_rebase"
-    git pull
-    num_to_squash=$(git cherry -v master | wc -l)
+    branch_to_rebase="${1:-$(gitcurr)}" && \
+    git checkout "$branch_to_rebase" && \
+    git pull && \
+    num_to_squash=$(git cherry -v master | wc -l) && \
     git rebase -i HEAD~$num_to_squash
 }
 export -f gitsquish
 
 # auto git rebase
 function gitrebase {
-    branch_to_rebase="${1:-$(gitcurr)}"
-    git checkout master
-    git fetch -a
-    git pull
-    git checkout "$branch_to_rebase"
-    git fetch origin
+    branch_to_rebase="${1:-$(gitcurr)}" && \
+    git checkout master && \
+    git fetch -a && \
+    git pull && \
+    git checkout "$branch_to_rebase" && \
+    git fetch origin && \
     git rebase origin/master
 }
 export -f gitrebase
@@ -55,8 +55,8 @@ export -f gitcurr
 # nearly-auto rebase change into last commit and force push
 function gitupdate {
     git add "$@"
-    git commit -m 'msg'
-    git rebase -i HEAD~2
+    git commit -m 'msg' && \
+    git rebase -i HEAD~2 && \
     git push origin -f $(gitcurr)
 }
 export -f gitupdate
