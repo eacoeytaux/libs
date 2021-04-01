@@ -57,7 +57,7 @@ function gitupdate {
     git add "$@"
     git commit -m 'msg' && \
     git rebase -i HEAD~2 && \
-    git push origin -f $(gitcurr)
+    git push origin --force-with-lease $(gitcurr)
 }
 export -f gitupdate
 
