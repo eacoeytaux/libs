@@ -31,7 +31,7 @@ export HISTCONTROL=ignoreboth;
 
 # -- grep settings --
 
-#export GREP_OPTIONS="--color=auto";
+export GREP_OPTIONS="--binary-files=without-match --color=auto";
 
 # -- bash aliases and functions --
 
