@@ -159,17 +159,17 @@ function findfile {
 }; export -f findfile;
 function ffind { findfile "$@"; }; export -f ffind;
 
-# search for string in files in current directory ~ usage: searchinfile/sif <string to search> <additional git options>
+# search for string in files in current directory ~ usage: searchinfiles/sif <string to search> <additional git options>
 function searchinfiles {
     grep -r -n ${@:2} --exclude-dir=.git --exclude-dir=node_modules "$1" ./
-}; export -f searchinfile;
-function sif { searchinfile "$@"; }; export -f sif;
+}; export -f searchinfiles;
+function sif { searchinfiles "$@"; }; export -f sif;
 
-# replace string in files in current directory ~ usage: replaceinfile/rif <string to replace> <replacement string>
+# replace string in files in current directory ~ usage: replaceinfiles/rif <string to replace> <replacement string>
 function replaceinfiles {
     find ./ ${@:3} -type f -exec sed -i "s|$1|$2|g" {} +
-}; export -f replaceinfile;
-function rif { replaceinfile "$@"; }; export -f rif;
+}; export -f replaceinfiles;
+function rif { replaceinfiles "$@"; }; export -f rif;
 
 # print date of latest edit in a folder ~ usage: lastedit <dir (default: ./)>
 function lastedit {
