@@ -3,6 +3,7 @@
 # if not running interactively then don't do anything
 [[ $- != *i* ]] && return;
 
+# default main branch to "master" unless variable is set locally
 [[ -z $git_main_branch ]] && git_main_branch="master";
 
 # aliases
