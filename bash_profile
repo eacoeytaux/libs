@@ -46,8 +46,7 @@ function xpnd { expandalias "$@"; }; export -f xpnd;
 alias S="sudo ";
 alias t="time ";
 alias w="watch ";
-alias h="history ";
-alias hg="history | grep ";
+alias h="historygrep ";
 alias view="vim -R ";
 alias mysql="mysql --i-am-a-dummy ";
 alias rmf="rm -rf ";
@@ -68,6 +67,15 @@ alias psaw="ps aux | head -1 && ps aux | grep \"^$(whoami) \" --color=never ";
 alias psas="ps aux | grep ";
 alias psaws="ps aux | grep \"^$(whoami) \" --color=never ";
 alias cpuuse="ps aux | grep \"^$(whoami) \" | awk \"{sum+=\\\$3}END{print sum}\" ";
+
+# run history with grep filter ~ usage: historygrep [<grep pattern/options>]
+function historygrep {
+	if [[ $# -eq 0 ]]; then
+		history
+	else
+		history | grep "$@"
+	fi
+}; export -f historygrep;
 
 # run last command as sudo ~ usage: please/pls
 function please {
