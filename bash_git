@@ -6,6 +6,8 @@
 [[ -z $git_main_branch ]] && git_main_branch="master";
 
 # aliases
+
+# shorthand aliases
 alias g="git ";
 alias gl="git log ";
 alias gs="git status ";
@@ -15,26 +17,24 @@ alias gc="git checkout ";
 alias gd="git diff ";
 alias gg="git grep --color=auto -n -i ";
 
-function gitlog {
-    git log "$@"
-}; export -f gitlog;
-function gitstatus {
-    git status "$@"
-}; export -f gitstatus;
-function gitbranch {
-    git branch "$@"
-}; export -f gitbranch;
-function gitcheckout {
-    git checkout "$@"
-}; export -f gitcheckout;
-function gitpull {
-    git pull "$@"
-}; export -f gitpull;
-function gitpush {
-    git push "$@"
-}; export -f gitpush;
-
+# most git aliases with space removed
+alias gitlog="git log ";
+alias gitstatus="git status ";
 alias gitbranch="git branch ";
+alias gitcheckout="git checkout ";
+alias gitstash="git stash ";
+alias gitadd="git add ";
+alias gitrm="git rm ";
+alias gitmv="git mv ";
+alias gitdiff="git diff ";
+alias gitblame="git blame ";
+alias gitpull="git pull ";
+alias gitpush="git push ";
+alias gitclean="git clean ";
+alias gitclone="git clone ";
+alias gitarchive="git archive ";
+alias gitgrep="git grep ";
+
 function gitcurrentbranch {
     git branch | grep '\* ' | cut -d '*' -f2 | cut -c2-
 }; export -f gitcurrentbranch;
