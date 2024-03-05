@@ -31,7 +31,8 @@ export HISTCONTROL=ignoreboth;
 
 # -- grep settings --
 
-export GREP_OPTIONS="--binary-files=without-match --color=auto";
+# obsolete?
+#export GREP_OPTIONS="--binary-files=without-match --color=auto";
 
 # -- bash aliases and functions --
 
@@ -46,7 +47,7 @@ alias S="sudo ";
 alias t="time ";
 alias w="watch ";
 alias h="history ";
-alias hg="history | grep";
+alias hg="history | grep ";
 alias view="vim -R ";
 alias mysql="mysql --i-am-a-dummy ";
 alias rmf="rm -rf ";
