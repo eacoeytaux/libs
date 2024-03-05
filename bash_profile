@@ -34,7 +34,7 @@ export HISTCONTROL=ignoreboth;
 # obsolete?
 #export GREP_OPTIONS="--binary-files=without-match --color=auto";
 
-# -- bash aliases and functions --
+# -- aliases --
 
 alias printfunction="declare -f ";
 function expandalias {
@@ -68,6 +68,14 @@ alias psas="ps aux | grep ";
 alias psaws="ps aux | grep \"^$(whoami) \" --color=never ";
 alias cpuuse="ps aux | grep \"^$(whoami) \" | awk \"{sum+=\\\$3}END{print sum}\" ";
 
+# -- functions --
+
+# run last command as sudo ~ usage: please/pls
+function please {
+    sudo $(history 2 | cut -d "]" -f2- | cut -c2- | head -1)
+}; export -f please;
+function pls { please "$@"; }; export -f pls;
+
 # run history with grep filter ~ usage: historygrep [<grep pattern/options>]
 function historygrep {
 	if [[ $# -eq 0 ]]; then
@@ -77,13 +85,7 @@ function historygrep {
 	fi
 }; export -f historygrep;
 
-# run last command as sudo ~ usage: please/pls
-function please {
-    sudo $(history 2 | cut -d "]" -f2- | cut -c2- | head -1)
-}; export -f please;
-function pls { please "$@"; }; export -f pls;
-
-# clear history
+# clear history ~ usage: clearhistory
 function clearhistory {
     echo "" > $HISTFILE
 }; export -f clearhistory;
