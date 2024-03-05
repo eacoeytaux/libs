@@ -3,6 +3,10 @@
 # if not running interactively then don't do anything
 [[ $- != *i* ]] && return;
 
+# default trash directory to "$HOME/.trash/" unless variable is set locally
+[[ -z $trash_dir ]] && trash_dir="$HOME/.trash/";
+mkdir -p "$trash_dir";
+
 # let user know "rm" should not be used
 alias rm="echo \"rm is disabled, use srm (saferm) or frm (forcerm) instead\"";
 
@@ -16,9 +20,6 @@ function Sforcerm {
     sudo \rm "$@"
 }; export -f Sforcerm
 function Sfrm { Sforcerm "$@"; }; export -f Sfrm;
-
-[[ -z $trash_dir ]] && trash_dir="$HOME/.trash/";
-mkdir -p "$trash_dir";
 
 # replaces rm by moving files to designated trash ~ usage: saferm <list of files to delete>
 function saferm {
