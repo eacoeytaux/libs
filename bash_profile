@@ -36,16 +36,16 @@ export HISTCONTROL=ignoreboth;
 # -- aliases --
 
 alias printfunction="declare -f ";
-function expandalias {
+function expand-alias {
     [[ -n $(alias | grep "^alias $1=") ]] && alias "$1" | cut -d\' -f2
-}; export -f expandalias;
-function xpnd { expandalias "$@"; }; export -f xpnd;
+}; export -f expand-alias;
+function xpnd { expand-alias "$@"; }; export -f xpnd;
 
 # mgmt aliases
 alias S="sudo ";
 alias t="time ";
 alias w="watch ";
-alias h="historygrep ";
+alias h="history-grep ";
 alias view="vim -R ";
 alias mysql="mysql --i-am-a-dummy ";
 alias rmf="rm -rf ";
@@ -75,19 +75,20 @@ function please {
 }; export -f please;
 function pls { please "$@"; }; export -f pls;
 
-# run history with grep filter ~ usage: historygrep [<grep pattern/options>]
-function historygrep {
+# run history with grep filter ~ usage: history-grep [<grep pattern/options>]
+function history-grep {
 	if [[ $# -eq 0 ]]; then
 		history
 	else
 		history | grep "$@"
 	fi
-}; export -f historygrep;
+}; export -f history-grep;
 
-# clear history ~ usage: clearhistory
-function clearhistory {
+# clear history ~ usage: history-clear
+function history-clear {
     echo "" > $HISTFILE
-}; export -f clearhistory;
+    history -c
+}; export -f history-clear;
 
 # cd .. an arbitrary number of times ~ usage: cdup <number>
 function cdup {
