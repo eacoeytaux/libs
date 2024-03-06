@@ -21,7 +21,7 @@ function ps1gitbranch {
     [[ -n "$PS1GITBRANCH" ]] && printf " ($PS1GITBRANCH)"
 }; export -f ps1gitbranch;
 
-export PS1='\e[0\]\e[36m\][\t \d] \e[35m\]`ps1hostname`:\e[33m\]`pwd`\e[32m\]`ps1gitbranch`\e[39m\]\e[1m\]\n> '
+export PS1='\e[0\]\e[36m\][\t \d] \e[35m\]`ps1hostname`:\e[33m\]`pwd`\e[32m\]`ps1gitbranch`\e[0m\]\n> '
 
 # -- history settings --
 
