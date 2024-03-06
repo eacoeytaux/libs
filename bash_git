@@ -13,77 +13,27 @@ alias g="git ";
 alias gl="git log ";
 alias gs="git status ";
 alias gb="git branch ";
-alias gcb="git branch | grep '\* ' | cut -d '*' -f2 | cut -c2- ";
+alias gbc="git branch-current ";
 alias gc="git checkout ";
 alias gd="git diff ";
 alias gg="git grep --color=auto -n -i ";
 
-# most git aliases with space removed
-alias gitlog="git log ";
-alias gitstatus="git status ";
-alias gitbranch="git branch ";
-alias gitcheckout="git checkout ";
-alias gitstash="git stash ";
-alias gitadd="git add ";
-alias gitrm="git rm ";
-alias gitmv="git mv ";
-alias gitdiff="git diff ";
-alias gitblame="git blame ";
-alias gitpull="git pull ";
-alias gitpush="git push ";
-alias gitclean="git clean ";
-alias gitclone="git clone ";
-alias gitarchive="git archive ";
-alias gitgrep="git grep ";
+function alias-git {
+    git config --global alias.$1 "!${@:2}"
+}; export -f alias-git;
 
-function gitcurrentbranch {
-    git branch | grep '\* ' | cut -d '*' -f2 | cut -c2-
-}; export -f gitcurrentbranch;
-
-# go to git main branch and pull from repo
-function gitlatest {
-    git checkout $git_main_branch && \
-    git pull origin $git_main_branch
-}; export -f gitlatest;
-
-# push with setting upstream
-function gitpushupstream {
-    git push --set-upstream origin $(gitcurrentbranch)
-}; export -f gitpushupstream;
-
-# create a new branch from the latest version of the repo
-function gitnew {
-    gitlatest && \
-    git checkout -b "$1"
-}; export -f gitnew;
-
-# auto git rebase
-function gitrebase {
-    branch_to_rebase="${1:-$(gitcurrentbranch)}" && \
-    git checkout $git_main_branch && \
-    git fetch -a && \
-    git pull && \
-    git checkout "$branch_to_rebase" && \
-    git fetch origin && \
-    git rebase origin/$git_main_branch
-}; export -f gitrebase;
-
-# git rebase all commits into one
-function gitsquish {
-    branch_to_rebase="${1:-$(gitcurrentbranch)}" && \
-    git checkout "$branch_to_rebase" && \
-    git pull && \
-    num_to_squash=$(git cherry -v $git_main_branch | wc -l) && \
-    git rebase -i HEAD~$num_to_squash
-}; export -f gitsquish;
-
-# nearly-auto rebase change into last commit and force push
-function gitaddtolast {
-    git add "$@"
-    git commit -m 'msg' && \
-    git rebase -i HEAD~2 && \
-    git push origin --force-with-lease $(gitcurrentbranch)
-}; export -f gitaddtolast;
+alias-git new "git latest && \
+                  git checkout -b"
+alias-git branch-current "git branch | \
+                             grep '\* ' | \
+                             cut -d '*' -f2 | \
+                             cut -c2-"
+alias-git checkout-latest "git checkout $git_main_branch && \
+                              git pull origin $git_main_branch"
+alias-git commit-all "git add -A && \
+                      git commit -m"
+alias-git push-upstream "git push --set-upstream origin $(git branch-current)"
+alias-git rebase+ "git rebase -i HEAD~$(git cherry -v $git_main_branch | wc -l)"
 
 # -- aliases for this file --
 
