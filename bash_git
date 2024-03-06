@@ -23,17 +23,17 @@ function alias-git {
 }; export -f alias-git;
 
 alias-git new "git latest && \
-                  git checkout -b"
+               git checkout -b"
 alias-git branch-current "git branch | \
-                             grep '\* ' | \
-                             cut -d '*' -f2 | \
-                             cut -c2-"
+                          grep '\* ' | \
+                          cut -d '*' -f2 | \
+                          cut -c2-"
 alias-git checkout-latest "git checkout $git_main_branch && \
-                              git pull origin $git_main_branch"
+                           git pull origin $git_main_branch"
 alias-git commit-all "git add -A && \
                       git commit -m"
-alias-git push-upstream "git push --set-upstream origin $(git branch-current)"
-alias-git rebase+ "git rebase -i HEAD~$(git cherry -v $git_main_branch | wc -l)"
+alias-git push-upstream "git push --set-upstream origin \$(git branch-current)"
+alias-git rebase+ "git rebase -i HEAD~\$(git cherry -v $git_main_branch | wc -l)"
 
 # -- aliases for this file --
 
