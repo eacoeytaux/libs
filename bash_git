@@ -24,7 +24,7 @@ alias gb="git branch ";
 alias gbc="git branch-current ";
 alias gc="git checkout ";
 alias gd="git diff ";
-alias gg="git grep --color=auto -n -i ";
+alias gg="git grep --color=auto -n -I ";
 
 # -- aliases for this file --
 
