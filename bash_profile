@@ -32,6 +32,7 @@ export HISTCONTROL=ignoreboth;
 
 # obsolete?
 #export GREP_OPTIONS="--binary-files=without-match --color=auto";
+alias grep="grep --binary-files=without-match --color=auto "
 
 # -- aliases --
 
