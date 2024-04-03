@@ -7,14 +7,16 @@ function alias-git {
     git config --global alias.$1 "!${@:2}"
 }; export -f alias-git;
 
-alias-git new "git checkout-latest && git checkout -b"
-alias-git branch-main "(git branch -vv | grep -Po \"^[\s\*]*\K[^\s]*(?=.*\$(git branch -rl '*/HEAD' | grep -o '[^ ]\+$'))\")"
-alias-git branch-current "(git branch | grep '\* ' | cut -d '*' -f2 | cut -c2-)"
-alias-git checkout-latest "function git_checkout_latest() { git checkout \$(git branch-main) \$@ && git pull origin \$(git branch-main); }; git_checkout_latest"
-alias-git commit-all "git add -A && git commit -m"
-alias-git push-upstream "git push --set-upstream origin \$(git branch-current)"
-alias-git rebase-since "git rebase -i HEAD~\$(git cherry -v $(git branch-main) | wc -l)"
-alias-git list-aliases "(git config --get-regexp ^alias | cut -c7- | sed 's/ \!/ = /g' | sort)"
+function git-aliases {
+    alias-git new "git checkout-latest && git checkout -b"
+    alias-git branch-main "(git branch -vv | grep -Po \"^[\s\*]*\K[^\s]*(?=.*\$(git branch -rl '*/HEAD' | grep -o '[^ ]\+$'))\")"
+    alias-git branch-current "(git branch | grep '\* ' | cut -d '*' -f2 | cut -c2-)"
+    alias-git checkout-latest "function git_checkout_latest() { git checkout \$(git branch-main) \$@ && git pull origin \$(git branch-main); }; git_checkout_latest"
+    alias-git commit-all "git add -A && git commit -m"
+    alias-git push-upstream "git push --set-upstream origin \$(git branch-current)"
+    alias-git rebase-since "git rebase -i HEAD~\$(git cherry -v $(git branch-main) | wc -l)"
+    alias-git list-aliases "(git config --get-regexp ^alias | cut -c7- | sed 's/ \!/ = /g' | sort)"
+}; export -f git-aliases;
 
 # shorthand aliases
 alias g="git ";
